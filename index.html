@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  <title>Cube</title>
+
+  <!-- imports bulma css framework -->
+  <link rel="stylesheet" type="text/css" href="css/bulma-0.6.2/css/bulma.css">
+
+  <!-- imports custom css -->
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+
+  <nav class="navbar is-white" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="index.html">
+        <img src="img/cube.png" alt="Cube: an everyday tool for your everday tool" width="28" height="28">
+      </a>
+
+      <button class="button navbar-burger is-white" data-target="navMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <div class="navbar-menu" id="navMenu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="customers.html">Customers</a>
+        <a class="navbar-item" href="directory.html">Directory</a>
+        <a class="navbar-item" href="parts.html">Parts</a>
+        <a class="navbar-item" href="pricebooks.html">Pricebooks</a>
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="mainWrapper">
+
+    <div class="hero" id="showDates"></div>
+    <!-- <div id="showTime"></div> -->
+    <!-- <div id="showCCTime"></div>
+    <div id="showCSTime"></div> -->
+
+    <!-- Main container -->
+    <nav class="level is-mobile">
+      <!-- Left side -->
+      <div class="level-left">
+        <div class="level-item">
+          <div class="field has-addons">
+            <p class="control has-icons-left">
+              <input type="text" class="input is-dark" name="date1" id="date1" value="" oninput="showDiff()" autocomplete="off" placeholder="Copy/Paste here">
+              <span class="icon is-small is-left"><i class="far fa-calendar-alt"></i></span>
+            </p>
+            <p class="control">
+              <button class="button is-dark" onclick="showDiff()">Submit</button>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right side -->
+      <div class="level-right">
+        <div class="level-item">
+          <p class="subtitle is-5">
+            <strong>CC</strong>
+          </p>
+        </div>
+        <div class="level-item has-text-centered">
+          <p class="heading">Days</p>
+          <p class="title" id="showccDays"></p>
+        </div>
+        <div class="level-item has-text-centered">
+          <p class="heading">Hours</p>
+          <p class="title" id="showccHours"></p>
+        </div>
+        <div class="level-item has-text-centered">
+          <p class="heading">Minutes</p>
+          <p class="title" id="showccMins"></p>
+        </div>
+        <div class="level-item has-text-centered">
+          <p class="heading">Seconds</p>
+          <p class="title" id="showccSecs"></p>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main container -->
+    <nav class="level is-mobile">
+      <!-- Left side -->
+      <div class="level-left">
+        <div class="level-item has-text-centered">
+          <p class="heading">Days</p>
+          <p class="title" id="showDays"></p>
+        </div>
+        <div class="level-item has-text-centered">
+          <p class="heading">Hours</p>
+          <p class="title" id="showHours"></p>
+        </div>
+        <div class="level-item has-text-centered">
+          <p class="heading">Minutes</p>
+          <p class="title" id="showMins"></p>
+        </div>
+        <div class="level-item has-text-centered">
+          <p class="heading">Seconds</p>
+          <p class="title" id="showSecs"></p>
+        </div>
+      </div>
+
+      <!-- Right side -->
+      <div class="level-right">
+        <div class="level-item">
+          <p class="subtitle is-5">
+            <strong>CS</strong>
+          </p>
+        </div>
+        <div class="level-item has-text-centered">
+          <p class="heading">Days</p>
+          <p class="title" id="showcsDays"></p>
+        </div>
+        <div class="level-item has-text-centered">
+          <p class="heading">Hours</p>
+          <p class="title" id="showcsHours"></p>
+        </div>
+        <div class="level-item has-text-centered">
+          <p class="heading">Minutes</p>
+          <p class="title" id="showcsMins"></p>
+        </div>
+        <div class="level-item has-text-centered">
+          <p class="heading">Seconds</p>
+          <p class="title" id="showcsSecs"></p>
+        </div>
+      </div>
+    </nav>
+
+  </div>
+
+
+
+  <!-- imports jquery -->
+  <!-- <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script> -->
+
+  <!-- imports fontawesome 5 -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
+
+  <!-- imports custom js -->
+  <script  type="text/javascript" src="js/script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	/* background-color: #0f0f0f; */
+}
+
+.mainWrapper {
+	/* background-color: black; */
+	/* color: white; */
+	max-width: 100vw; /* vw = viewport width */
+	height: 100vh;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.input {
+	/* width: 50%; */
+}
+
+.clear:after {
+	content: "";
+	display: block;
+	clear: both;
+}

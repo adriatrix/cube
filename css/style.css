@@ -9,17 +9,72 @@ body {
 }
 
 .mainWrapper {
-	/* background-color: black; */
-	/* color: white; */
 	max-width: 100vw; /* vw = viewport width */
 	height: 100vh;
 	margin: 0 auto;
 	text-align: center;
 }
 
-.input {
-	/* width: 50%; */
+.navbar-item.is-mega {
+  position: static;
 }
+
+.is-mega-menu-title {
+    margin-bottom: 0;
+    padding: .375rem 1rem;
+  }
+}
+
+.input {
+	width: 50%;
+}
+
+input[placeholder]{
+    text-align:center;
+}
+
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type='button'] {
+	/* padding: 5px; */
+	width: 50px;
+	height: 50px;
+}
+
+
+#calcDisplay {
+	border: 1px solid black;
+	width: 200px;
+	margin: 20px auto;
+	font-size: 2em;
+	text-align: right;
+	padding: 5px;
+}
+
+input[id='num0'] {
+	width: 104px;
+}
+
+input {
+	border-style: outset;
+}
+
+input:active {
+	border-style: inset;
+}
+
+input:hover {
+	color: dimgrey;
+}
+
 
 .clear:after {
 	content: "";

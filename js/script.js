@@ -33,7 +33,36 @@ function get2D(num) {
     return num.toString(); // return string for consistency
 }
 
-//"12/22/2017 08:33:00"
+$("#showCalc").click(function() {
+  $(".modal").addClass("is-active");
+});
+
+$(".modal-close").click(function() {
+   $(".modal").removeClass("is-active");
+});
+
+
+
+function emptyBox() {
+  document.getElementById("showDays").innerHTML = "00";
+  document.getElementById("showHours").innerHTML = "00";
+  document.getElementById("showMins").innerHTML = "00";
+  document.getElementById("showSecs").innerHTML = "00";
+
+  document.getElementById("showccDays").innerHTML = "00";
+  document.getElementById("showccHours").innerHTML = "00";
+  document.getElementById("showccMins").innerHTML = "00";
+  document.getElementById("showccSecs").innerHTML = "00";
+
+  document.getElementById("showcsDays").innerHTML = "00";
+  document.getElementById("showcsHours").innerHTML = "00";
+  document.getElementById("showcsMins").innerHTML = "00";
+  document.getElementById("showcsSecs").innerHTML = "00";
+}
+
+emptyBox();
+
+
 function showDiff() {
 
   var csStatus = "";
@@ -41,9 +70,11 @@ function showDiff() {
   // var date1 = document.inputForm.date1.value;
   var date1 = document.getElementById('date1').value
   console.log(date1);
+
+
   // var date1 = "01/02/2018 02:51:00";
   var date1 = date1.substr(6, 4) + "-" + date1.substr(0, 2) + "-" + date1.substr(3, 2) + "T" + date1.substr(11, 8);
-  // console.log(date1);
+  console.log(date1);
   var date1 = new Date(date1);
   // console.log(date1);
   var date2 = new Date();
@@ -51,7 +82,7 @@ function showDiff() {
 
   var diff = (date2 - date1)/1000;
   var diff = Math.abs(Math.floor(diff));
-  console.log(diff);
+  // console.log(diff);
 
   var days = Math.floor(diff/(24*60*60));
   var leftSec = diff - days * 24*60*60;
@@ -90,30 +121,31 @@ function showDiff() {
 
   var cshrs = 19 - hrs;
   if (cshrs < 0) {
-    // csStatus = "over SLA"
     document.getElementById("showcsDays").style.color = "red";
     document.getElementById("showcsHours").style.color = "red";
     document.getElementById("showcsMins").style.color = "red";
     document.getElementById("showcsSecs").style.color = "red";
-  } else
-    csStatus = "remains before SLA ";
-  console.log(csStatus);
+  } else {
+    document.getElementById("showcsDays").style.color = "green";
+    document.getElementById("showcsHours").style.color = "green";
+    document.getElementById("showcsMins").style.color = "green";
+    document.getElementById("showcsSecs").style.color = "green";
+  }
   cshrs = Math.abs(cshrs);
-  console.log(csStatus);
 
   var cchrs = 3 - hrs;
-  if (cchrs < 0)
-    ccStatus = "over SLA"
-  else
-    ccStatus = "remains before SLA";
-  console.log(ccStatus);
+  if (cchrs < 0) {
+    document.getElementById("showccDays").style.color = "red";
+    document.getElementById("showccHours").style.color = "red";
+    document.getElementById("showccMins").style.color = "red";
+    document.getElementById("showccSecs").style.color = "red";
+  } else {
+    document.getElementById("showccDays").style.color = "green";
+    document.getElementById("showccHours").style.color = "green";
+    document.getElementById("showccMins").style.color = "green";
+    document.getElementById("showccSecs").style.color = "green";
+  }
   cchrs = Math.abs(cchrs);
-  console.log(ccStatus);
-
-  document.getElementById("showDates").innerHTML = "From " + date1 + " to " + date2 + ".";
-  // document.getElementById("showTime").innerHTML = "" + days + " days " + hrs + " hours " + min + " minutes and " + leftSec + " seconds have passed.";
-  // document.getElementById("showCCTime").innerHTML = "" + days + " days " + cchrs + " hours " + ccmin + " minutes and " + ccleftSec + " seconds " + ccStatus + "";
-  // document.getElementById("showCSTime").innerHTML = "" + days + " days " + cshrs + " hours " + csmin + " minutes and " + csleftSec + " seconds " + csStatus + "";
 
   document.getElementById("showDays").innerHTML = get2D(days);
   document.getElementById("showHours").innerHTML = get2D(hrs);
@@ -130,5 +162,13 @@ function showDiff() {
   document.getElementById("showcsMins").innerHTML = get2D(csmin);
   document.getElementById("showcsSecs").innerHTML = get2D(csleftSec);
 
-  // setTimeout(showDiff,1000);
+  if (date1 == "" || isNaN(date1)) {
+    emptyBox();
+    document.getElementById("showDate1").innerHTML = "<span class='has-text-danger'>" + date1 + "</span>";
+  } else {
+    document.getElementById("showDate1").innerHTML = "<strong>from: </strong>" + date1;
+    document.getElementById("showDate2").innerHTML = "<strong>to: </strong>" + date2;
+  }
+
+  setTimeout(showDiff,1000);
 }

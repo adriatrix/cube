@@ -10,6 +10,9 @@
   <!-- imports bulma css framework -->
   <link rel="stylesheet" type="text/css" href="css/bulma-0.6.2/css/bulma.css">
 
+  <!-- imports animate css -->
+  <link rel="stylesheet" type="text/css" href="css/animate.css">
+
   <!-- imports custom css -->
   <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
@@ -29,9 +32,9 @@
     </div>
 
     <div id="navMenu" class="navbar-menu">
-      <div class="navbar-start">
+      <div class="navbar-end">
         <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link  is-active" href="#">Documents</a>
+          <a class="navbar-link" href="#">Documentations</a>
           <div class="navbar-dropdown ">
             <a class="navbar-item" href="#">Overview</a>
             <a class="navbar-item" href="#">Customers</a>
@@ -41,319 +44,332 @@
             <hr class="navbar-divider">
             <div class="navbar-item">
               <div>
-                <p class="is-size-6-desktop"><strong>Cube ver. <span class="has-text-info">0.1.1</span></strong></p>
-                <small><a class="bd-view-all-versions" href="#">View all versions</a></small>
+                <p class="is-size-6-desktop"><strong>Cube ver. <span class="has-text-info">0.1.9</span></strong></p>
+                <small><a class="bd-view-all-versions" href="versions.html">View all versions</a></small>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="navbar-item has-dropdown is-hoverable is-mega">
-          <a class="navbar-link" href="#">SLA Helper</a>
-          <div class="navbar-dropdown" data-style="width:18rem;">
-            <div class="container is-fluid">
-              <div class="columns">
-                <!-- NOTE: SLA Helper -->
-                <div class="column sla-input-box">
-                  <!-- for date/time input box -->
-                  <div class="has-addons">
-                    <div class="control has-icons-left has-text-centered">
-                      <input type="text" class="input is-dark" name="date1" id="date1" value="" oninput="showDiff()" autocomplete="off" placeholder="copy&paste received date/time here">
-                      <span class="icon is-small is-left"><i class="far fa-calendar-alt"></i></span>
-                    </div>
-                  </div>
-                  <div class="is-size-6 has-text-centered">
-                    <p id="showDate1"></p>
-                    <p id="showDate2"></p>
-                  </div>
-                </div> <!-- /.column -->
-                <div class="column sla-output-box">
 
-                  <div class="columns is-mobile">
-                    <div class="column">
-                      <div class="is-size-5">
-                        <p>elapsed time</p>
-                        <p></p>
-                      </div>
-                    </div>
-                    <div class="column has-text-centered">
-                      <div class="is-size-5">
-                        <p class="heading">Days</p>
-                        <p class="title" id="showDays"></p>
-                      </div>
-                    </div>
-                    <div class="column has-text-centered">
-                      <div class="is-size-5">
-                        <p class="heading">Hours</p>
-                        <p class="title" id="showHours"></p>
-                      </div>
-                    </div>
-                    <div class="column has-text-centered">
-                      <div class="is-size-5">
-                        <p class="heading">Minutes</p>
-                        <p class="title" id="showMins"></p>
-                      </div>
-                    </div>
-                    <div class="column has-text-centered">
-                      <div class="is-size-5">
-                        <p class="heading">Seconds</p>
-                        <p class="title" id="showSecs"></p>
-                      </div>
-                    </div>
-                  </div>
 
-                  <div class="columns is-mobile">
-                    <div class="column">
-                      <div class="is-size-5">
-                        <p>case creator</p>
-                      </div>
-                    </div>
-                    <div class="column has-text-centered">
-                      <div class="is-size-5">
-                        <p class="heading">Days</p>
-                        <p class="title" id="showccDays"></p>
-                      </div>
-                    </div>
-                    <div class="column has-text-centered">
-                      <div class="is-size-5">
-                        <p class="heading">Hours</p>
-                        <p class="title" id="showccHours"></p>
-                      </div>
-                    </div>
-                    <div class="column has-text-centered">
-                      <div class="is-size-5">
-                        <p class="heading">Minutes</p>
-                        <p class="title" id="showccMins"></p>
-                      </div>
-                    </div>
-                    <div class="column has-text-centered">
-                      <div class="is-size-5">
-                        <p class="heading">Seconds</p>
-                        <p class="title" id="showccSecs"></p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="columns is-mobile">
-                    <div class="column">
-                      <div class="is-size-5">
-                        <p>order admin</p>
-                      </div>
-                    </div>
-                    <div class="column has-text-centered">
-                      <div class="is-size-5">
-                        <p class="heading">Days</p>
-                        <p class="title" id="showcsDays"></p>
-                      </div>
-                    </div>
-                    <div class="column has-text-centered">
-                      <div class="is-size-5">
-                        <p class="heading">Hours</p>
-                        <p class="title" id="showcsHours"></p>
-                      </div>
-                    </div>
-                    <div class="column has-text-centered">
-                      <div class="is-size-5">
-                        <p class="heading">Minutes</p>
-                        <p class="title" id="showcsMins"></p>
-                      </div>
-                    </div>
-                    <div class="column has-text-centered">
-                      <div class="is-size-5">
-                        <p class="heading">Seconds</p>
-                        <p class="title" id="showcsSecs"></p>
-                      </div>
-                    </div>
-                  </div>
-
-                </div> <!-- /.column -->
-              </div> <!-- /. columns -->
-
-            </div>
-          </div>
-        </div> <!-- SLA Helper -->
-
-        <div class="navbar-item has-dropdown is-hoverable is-mega">
+        <!-- <div class="navbar-item has-dropdown is-hoverable is-mega">
           <a class="navbar-link" href="#">Calculator</a>
           <div class="navbar-dropdown" data-style="width:18rem;">
             <div class="container is-fluid">
-              <div class="columns">
-                <!-- NOTE: SLA Helper -->
-                <div class="column sla-input-box">
-                  <!-- for date/time input box -->
-                  <div class="has-addons">
-                    <div class="control has-icons-left has-text-centered">
-                      <input type="text" class="input is-dark" name="date1" id="date1" value="" oninput="showDiff()" autocomplete="off" placeholder="copy&paste received date/time here">
-                      <span class="icon is-small is-left"><i class="far fa-calendar-alt"></i></span>
-                    </div>
-                  </div>
-                  <div class="is-size-6 has-text-centered">
-                    <p id="showDate1"></p>
-                    <p id="showDate2"></p>
-                  </div>
-                </div> <!-- /.column -->
-                <div class="column sla-output-box">
-
-                  <div class="columns is-mobile">
-                    <div class="column">
-                      <div class="is-size-5">
-                        <p>elapsed time</p>
-                        <p></p>
-                      </div>
-                    </div>
-                    <div class="column has-text-centered">
-                      <div class="is-size-5">
-                        <p class="heading">Days</p>
-                        <p class="title" id="showDays"></p>
-                      </div>
-                    </div>
-                    <div class="column has-text-centered">
-                      <div class="is-size-5">
-                        <p class="heading">Hours</p>
-                        <p class="title" id="showHours"></p>
-                      </div>
-                    </div>
-                    <div class="column has-text-centered">
-                      <div class="is-size-5">
-                        <p class="heading">Minutes</p>
-                        <p class="title" id="showMins"></p>
-                      </div>
-                    </div>
-                    <div class="column has-text-centered">
-                      <div class="is-size-5">
-                        <p class="heading">Seconds</p>
-                        <p class="title" id="showSecs"></p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="columns is-mobile">
-                    <div class="column">
-                      <div class="is-size-5">
-                        <p>case creator</p>
-                      </div>
-                    </div>
-                    <div class="column has-text-centered">
-                      <div class="is-size-5">
-                        <p class="heading">Days</p>
-                        <p class="title" id="showccDays"></p>
-                      </div>
-                    </div>
-                    <div class="column has-text-centered">
-                      <div class="is-size-5">
-                        <p class="heading">Hours</p>
-                        <p class="title" id="showccHours"></p>
-                      </div>
-                    </div>
-                    <div class="column has-text-centered">
-                      <div class="is-size-5">
-                        <p class="heading">Minutes</p>
-                        <p class="title" id="showccMins"></p>
-                      </div>
-                    </div>
-                    <div class="column has-text-centered">
-                      <div class="is-size-5">
-                        <p class="heading">Seconds</p>
-                        <p class="title" id="showccSecs"></p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="columns is-mobile">
-                    <div class="column">
-                      <div class="is-size-5">
-                        <p>order admin</p>
-                      </div>
-                    </div>
-                    <div class="column has-text-centered">
-                      <div class="is-size-5">
-                        <p class="heading">Days</p>
-                        <p class="title" id="showcsDays"></p>
-                      </div>
-                    </div>
-                    <div class="column has-text-centered">
-                      <div class="is-size-5">
-                        <p class="heading">Hours</p>
-                        <p class="title" id="showcsHours"></p>
-                      </div>
-                    </div>
-                    <div class="column has-text-centered">
-                      <div class="is-size-5">
-                        <p class="heading">Minutes</p>
-                        <p class="title" id="showcsMins"></p>
-                      </div>
-                    </div>
-                    <div class="column has-text-centered">
-                      <div class="is-size-5">
-                        <p class="heading">Seconds</p>
-                        <p class="title" id="showcsSecs"></p>
-                      </div>
-                    </div>
-                  </div>
-
-                </div> <!-- /.column -->
-              </div> <!-- /. columns -->
-
             </div>
           </div>
-        </div> <!-- SLA Helper -->
+        </div> -->
 
       </div>
     </div>
 
   </nav>
 
-  <div class="modal">
-  <div class="modal-background"></div>
-  <div class="modal-content is-clearfix">
-    <button class="modal-close" aria-label="close"></button>
-    <div class="box">
-      <p id="calcDisplay">0</p>
+
+  <!-- start of SLA Helper section -->
+  <section class="section box">
+    <div class="container is-fluid">
+      <h2 class="title has-text-grey">SLA Helper</h2>
       <div class="columns">
-        <input type="button" id="clear" value="C" onclick="clearDisplay()">
-        <input type="button" id="delete" value="<" onclick="deleteChar()">
-        <input type="button" id="percent" value="%" onclick="computePercent()">
-        <input type="button" id="divide" value="/" onclick="updateDisplay(this.value)">
-      </div>
+        <div class="column is-3">
+          <div class="columns is-multiline">
+            <div class="column is-10 is-offset-1 box">
+              <!-- for date/time input box -->
+              <div class="has-addons has-addons-centered">
+                <label for="date1">received date/time</label>
+                <div class="control has-icons-left has-text-centered">
+                  <input type="text" class="input is-small is-dark" name="date1" id="date1" value="" oninput="showDiff()" autocomplete="off" placeholder="enter received date/time here">
+                  <span class="icon is-small is-left"><i class="far fa-calendar-alt"></i></span>
+                </div>
+              </div>
+            </div>
+            <div class="column is-12">
+              <p class="has-text-centered" id="showDate1"></p>
+              <p class="has-text-centered" id="showDate2"></p>
+            </div>
+          </div>
+        </div> <!-- /.column -->
+        <div class="column is-3">
+          <div class="columns is-mobile">
+            <div class="column is-10 is-offset-1">
+              <p>orders counter<span class="is-pulled-right" id="">80%</span></p>
+                <div class="field-body">
+                  <div class="field has-addons">
+                    <p class="control">
+                      <input class="input is-success is-small" type="number" placeholder="within SLA" value="1">
+                    </p>
+                    <p class="control">
+                      <a class="button is-success is-small" id="addgood" onclick="addGood()">
+                        <i class="fas fa-thumbs-up"></i>
+                      </a>
+                    </p>
+                  </div>
+                  <div class="field has-addons">
+                    <p class="control">
+                      <input class="input is-danger is-small" type="number" placeholder="over SLA" value="1">
+                    </p>
+                    <p class="control">
+                      <a class="button is-danger is-small" id="addbad" onclick="addBad()">
+                        <i class="fas fa-thumbs-down"></i>
+                      </a>
+                    </p>
+                  </div>
+                </div>
+                <div class="column is-12">
+                  <p id="showTotalGood"></p>
+                </div>
+            </div>
+
+                  <!-- <div class="counter-box">
+                    <span class="has-text-weight-bold" id="">TOTALS: daily: 10</span>
+                    <span class="has-text-weight-bold" id="">monthly: 12</span>
+                  </div> -->
+                  <!-- <span class="is-size-7">interco discount: </span> -->
+                  <!-- <span class="is-size-6" id="showICD"></span> -->
+            <!-- <div class="column">
+              <a class="button is-warning is-small has-text-weight-bold">X</a>
+            </div> -->
+          </div>
+        </div> <!-- /.column -->
+
+        <div class="column box">
+
+          <div class="columns is-mobile sla-elapsed-time">
+            <div class="column">
+              <div class="is-size-5 has-text-centered">
+                <p class="heading">elapsed</p>
+                <p class="heading"><strong>time</strong></p>
+              </div>
+            </div>
+            <div class="column has-text-centered">
+              <div class="is-size-5">
+                <p class="heading">Days</p>
+                <p class="has-text-weight-bold" id="showDays"></p>
+              </div>
+            </div>
+            <div class="column has-text-centered">
+              <div class="is-size-5">
+                <p class="heading">Hours</p>
+                <p class="has-text-weight-bold" id="showHours"></p>
+              </div>
+            </div>
+            <div class="column has-text-centered">
+              <div class="is-size-5">
+                <p class="heading">Minutes</p>
+                <p class="has-text-weight-bold" id="showMins"></p>
+              </div>
+            </div>
+            <div class="column has-text-centered">
+              <div class="is-size-5">
+                <p class="heading">Seconds</p>
+                <p class="has-text-weight-bold" id="showSecs"></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="columns is-mobile">
+            <div class="column">
+              <div class="is-size-5 has-text-centered">
+                <p class="heading" id="showStatus1"></p>
+                <p class="heading has-text-weight-bold" id="showStatus2"></p>
+              </div>
+            </div>
+            <div class="column has-text-centered">
+              <div class="is-size-5">
+                <p class="heading">Days</p>
+                <p class="has-text-weight-bold" id="showcsDays"></p>
+              </div>
+            </div>
+            <div class="column has-text-centered">
+              <div class="is-size-5">
+                <p class="heading">Hours</p>
+                <p class="has-text-weight-bold" id="showcsHours"></p>
+              </div>
+            </div>
+            <div class="column has-text-centered">
+              <div class="is-size-5">
+                <p class="heading">Minutes</p>
+                <p class="has-text-weight-bold" id="showcsMins"></p>
+              </div>
+            </div>
+            <div class="column has-text-centered">
+              <div class="is-size-5">
+                <p class="heading">Seconds</p>
+                <p class="has-text-weight-bold" id="showcsSecs"></p>
+              </div>
+            </div>
+          </div>
+
+        </div> <!-- /.column -->
+      </div> <!-- /. columns -->
+
+    </div>
+  </section>
+  <!-- end of SLA Helper section -->
+
+  <!-- start of Price Calculator section -->
+  <section class="section">
+    <div class="container is-fluid">
+      <p class="is-size-3 has-text-left has-text-grey is-my-header">Price Calculator</p>
       <div class="columns">
-        <input type="button" id="num7" value="7" onclick="updateDisplay(this.value)">
-        <input type="button" id="num8" value="8" onclick="updateDisplay(this.value)">
-        <input type="button" id="num9" value="9" onclick="updateDisplay(this.value)">
-        <input type="button" id="multiply" value="*" onclick="updateDisplay(this.value)">
-      </div>
-      <div class="columns">
-        <input type="button" id="num4" value="4" onclick="updateDisplay(this.value)">
-        <input type="button" id="num5" value="5" onclick="updateDisplay(this.value)">
-        <input type="button" id="num6" value="6" onclick="updateDisplay(this.value)">
-        <input type="button" id="subtract" value="-" onclick="updateDisplay(this.value)">
-      </div>
-      <div class="columns">
-        <input type="button" id="num1" value="1" onclick="updateDisplay(this.value)">
-        <input type="button" id="num2" value="2" onclick="updateDisplay(this.value)">
-        <input type="button" id="num3" value="3" onclick="updateDisplay(this.value)">
-        <input type="button" id="add" value="+" onclick="updateDisplay(this.value)">
-      </div>
-      <div class="columns">
-        <input type="button" id="num0" value="0" onclick="updateDisplay(this.value)">
-        <input type="button" id="period" value="." onclick="updateDisplay(this.value)">
-        <input type="button" id="equals" value="=" onclick="computeExpression()">
-      </div>
-      <!-- <footer class="modal-card-foot">
-      <button class="button is-success">Save changes</button>
-      <button class="button">Cancel</button>
-      </footer> -->
-    </div> <!-- /.box -->
-  </div>
-</div>
+        <div class="column is-3">
+          <div class="columns is-multiline">
+            <div class="column is-10 is-offset-1">
+              <div class="has-addons has-addons-centered">
+                <label>list price:</label>
+                <div class="control has-icons-left">
+                  <input type="text" class="input is-small is-dark" id="listedprice" value="" oninput="checkComputations()" autocomplete="off" placeholder="enter list price">
+                  <span class="icon is-small is-left"><i class="fas fa-dollar-sign"></i></span>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="column is-10 is-offset-1">
+            </div>
+            <div class="column is-10 is-offset-1">
+              <div class="has-addons has-addons-cente red">
+                <label for="discedprice">what's the discounted price?</label>
+                <div class="control has-icons-left">
+                  <input type="text" class="input is-small is-dark" name="discedprice" id="discedprice" value="" oninput="computeDiscPrice()" autocomplete="off" placeholder="enter discounted price">
+                  <span class="icon is-small is-left"><i class="fas fa-dollar-sign"></i></span>
+                </div>
+              </div>
+            </div> -->
+            <!-- <div class="column is-12">
+              <p class="has-text-centered" id="showDiscount"></p>
+            </div> -->
+          </div>
+        </div> <!-- /.column -->
+
+        <div class="column is-3">
+          <div class="columns is-multiline">
+            <!-- for interco factor drop down -->
+            <div class="column is-6 is-offset-1">
+              <div class="field">
+                <label for=""><i class="fas fa-barcode"></i> price code</label>
+                <div class="control">
+                  <div class="select is-small is-dark">
+                    <select name="pricecode" id="priceCode" oninput="showICFactor()">
+                      <option class="selected" >------------</option>
+                      <option>GC-1500XA</option>
+                      <option>GC-2350A</option>
+                      <option>GC-370XA</option>
+                      <option>GC-500</option>
+                      <option>GC-500NG</option>
+                      <option>GC-700XA</option>
+                      <option>GC-770XA</option>
+                      <option>GC-AUX</option>
+                      <option>GC-BTUSCS</option>
+                      <option>GC-370SCS</option>
+                      <option>GC-CAB</option>
+                      <option>GC-370ENC</option>
+                      <option>GC-SERV</option>
+                      <option>GC-SP370</option>
+                      <option>GC-SP</option>
+                      <option>GC-ESP</option>
+                      <option>GC-EUR</option>
+                    </select>
+                  </div>
+                </div>
+                <span class="is-size-7">interco discount: </span>
+                <span class="is-size-6 has-text-weight-bold" id="showICD"></span>
+              </div>
+            </div>
+            <div class="column is-4">
+              <div class="field">
+                <label for=""><i class="fas fa-globe"></i> area</label>
+                <div class="control">
+                  <div class="select is-small is-dark">
+                    <select name="worldarea" id="worldArea" oninput="showICFactor()">
+                      <option class="selected" >------</option>
+                      <option>NA</option>
+                      <option>EUR</option>
+                      <option>AP</option>
+                      <option>LATAM</option>
+                      <option>MEA</option>
+                    </select>
+                  </div>
+                </div>
+                <span class="is-size-7">glp: </span>
+                <span class="is-size-6 has-text-weight-bold" id="showGLP"></span>
+              </div>
+            </div>
+          </div>
+        </div> <!-- /.column -->
+
+        <div class="column is-3">
+          <div class="columns is-multiline">
+            <div class="column is-10 is-offset-1">
+              <div class="has-addons has-addons-cente red">
+                <label for="">interco factor:</label>
+                <div class="control has-icons-left has-text-centered">
+                  <input type="text" class="input is-small is-dark" name="showICF" id="showICF" value="" autocomplete="off" placeholder="enter interco factor">
+                  <span class="icon is-small is-left"><i class="fas fa-pencil-alt"></i></span>
+                </div>
+              </div>
+            </div>
+            <div class="column is-10 is-offset-1">
+            </div>
+            <div class="column is-10 is-offset-1">
+              <div class="has-addons has-addons-cente red">
+                <label>discount:</label>
+                <div class="control has-icons-right has-text-centered">
+                  <input type="text" class="input is-small is-dark" id="discount" value="" autocomplete="off" placeholder="enter discount" oninput="computeDiscount()">
+                  <span class="icon is-small is-right"><i class="fas fa-percent"></i></span>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="column is-12">
+            <p class="has-text-centered" id="showDiscount"></p>
+          </div> -->
+        </div>
+      </div> <!-- /.column -->
+        <div class="column is-3">
+          <div class="columns is-multiline">
+            <div class="column is-10 is-offset-1">
+              <div class="has-addons has-addons-cente red">
+                <label for="discedprice">discounted interco price</label>
+                <div class="control has-icons-left">
+                  <input type="text" class="input is-small is-dark" readonly id="" value="" oninput="" autocomplete="off">
+                  <span class="icon is-small is-left"><i class="fas fa-dollar-sign"></i></span>
+                </div>
+              </div>
+            </div>
+            <div class="column is-10 is-offset-1">
+            </div>
+            <div class="column is-10 is-offset-1">
+              <div class="has-addons has-addons-cente red">
+                <label for="discedprice">discounted price:</label>
+                <div class="control has-icons-left">
+                  <input type="text" class="input is-small is-dark" id="discedprice" value="" oninput="computeDiscPrice()" autocomplete="off">
+                  <span class="icon is-small is-left"><i class="fas fa-dollar-sign"></i></span>
+                  <!-- <span class="is-size-7 is-hidden" id="showDiscountLabel">discount applied to list price: </span>
+                  <span class="is-size-6 has-text-weight-bold" id="showDiscount"></span> -->
+                </div>
+              </div>
+            </div>
+            <!-- <div class="column is-12">
+            <p class="has-text-centered" id="showDiscount"></p>
+          </div> -->
+        </div>
+      </div> <!-- /.column -->
+
+      </div> <!-- /. columns -->
+    </div>
+  </section>
+  <!-- end of Price Calculator section -->
+
 
   <div class="mainWrapper container is-fluid">
-    <button class="button" id="showCalc">Show</button>
+    <div id="snackbar"></div>
   </div> <!-- /.mainWrapper -->
-
 
 
   <!-- imports jquery -->
   <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+
+  <!-- imports ohsnap -->
+  <script type="text/javascript" src="js/ohsnap.min.js"></script>
 
   <!-- imports fontawesome 5 -->
   <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>

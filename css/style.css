@@ -25,15 +25,16 @@ body {
   }
 }
 
-.input {
-	width: 50%;
+.is-my-header {
+		border: 30px;
 }
 
-input[placeholder]{
-    text-align:center;
+.is-counter-box {
+	width: 100px;
+	border: 1px solid black;
 }
 
-input[type='number'] {
+/* input[type='number'] {
     -moz-appearance:textfield;
 }
 
@@ -41,40 +42,60 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
+} */
+
+.sla-elapsed-time {
+	border-bottom: 1px solid lightgrey;
 }
 
-input[type='button'] {
-	/* padding: 5px; */
-	width: 50px;
-	height: 50px;
+
+/* The snackbar - position it at the bottom and in the middle of the screen */
+#snackbar {
+    visibility: hidden; /* Hidden by default. Visible on click */
+    min-width: 250px; /* Set a default minimum width */
+    margin-left: -125px; /* Divide value of min-width by 2 */
+    background-color: rgba(25,45,220,0.6); /* blue background color */
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    color: #fff; /* White text color */
+    text-align: center; /* Centered text */
+    border-radius: 2px; /* Rounded borders */
+    padding: 10px; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    z-index: 1; /* Add a z-index if needed */
+    left: 50%; /* Center the snackbar */
+    bottom: 30px; /* 30px from the bottom */
 }
 
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar.show {
+    visibility: visible; /* Show the snackbar */
 
-#calcDisplay {
-	border: 1px solid black;
-	width: 200px;
-	margin: 20px auto;
-	font-size: 2em;
-	text-align: right;
-	padding: 5px;
+/* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 4.5s;
+    animation: fadein 0.5s, fadeout 0.5s 4.5s;
 }
 
-input[id='num0'] {
-	width: 104px;
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
 }
 
-input {
-	border-style: outset;
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
 }
 
-input:active {
-	border-style: inset;
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
 }
 
-input:hover {
-	color: dimgrey;
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
 }
-
 
 .clear:after {
 	content: "";

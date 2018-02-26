@@ -17,7 +17,11 @@
   <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-  <nav class="navbar is-white" role="navigation" aria-label="main navigation">
+
+
+<section class="hero is-light is-small">
+<div class="hero-head">
+  <nav class="navbar is-grey" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item" href="index.html">
         <img src="img/cube.png" alt="Cube: an everyday tool for your everday tool" width="28" height="28">
@@ -35,7 +39,6 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="#">Documentations</a>
           <div class="navbar-dropdown ">
-            <a class="navbar-item" href="#">Overview</a>
             <a class="navbar-item" href="#">Customers</a>
             <a class="navbar-item" href="#">Directory</a>
             <a class="navbar-item" href="#">Parts</a>
@@ -52,8 +55,9 @@
       </div>
     </div>
   </nav>
+</div>
 
-
+<div class="hero-body">
   <div class="container is-fluid">
     <h2 class="title has-text-grey">SLA Helper</h2>
     <div class="columns">
@@ -147,8 +151,8 @@
 
       <div class="column is-3">
         <div class="columns is-mobile">
-          <div class="column is-10 is-offset-1">
-            <p>orders counter<span class="is-pulled-right">SLA: <span class="has-text-weight-bold" id="showSLAScore"></span></span></p>
+          <div class="column is-10 is-offset-1 is-mobile">
+            <p>total orders: <span class="has-text-weight-bold has-text-grey-darker" id="showTotalOrders"></span><span class="is-pulled-right">SLA: <span class="has-text-weight-bold" id="showSLAScore"></span></span></p>
             <div class="field-body">
               <div class="field has-addons">
                 <p class="control">
@@ -160,6 +164,17 @@
                   </a>
                 </p>
               </div>
+              <div class="column has-text-centered">
+                <div class="is-size-5">
+                  <p id="showTotalGood"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="columns is-mobile is-gapless">
+          <div class="column is-10 is-offset-1">
+            <div class="field-body">
               <div class="field has-addons">
                 <p class="control">
                   <input class="input is-danger is-medium" step="1" id="badvalue" type="number" placeholder="over SLA" value="1">
@@ -170,40 +185,13 @@
                   </a>
                 </p>
               </div>
-            </div>
-          </div>
-        </div>
-        <div class="columns is-mobile">
-          <div class="column is-10 is-offset-1">
-            <div class="columns">
               <div class="column has-text-centered">
                 <div class="is-size-5">
-                  <p class="heading">Good</p>
-                  <p class="has-text-weight-light" id="showTotalGood"></p>
-                </div>
-              </div>
-              <div class="column has-text-centered">
-                <div class="is-size-5">
-                  <p class="heading">Bad</p>
-                  <p class="has-text-weight-light" id="showTotalBad"></p>
-                </div>
-              </div>
-              <div class="column">
-              </div>
-              <div class="column has-text-centered">
-                <div class="is-size-5">
-                  <p class="heading">Total</p>
-                  <p class="has-text-weight-bold" id="showTotalOrders"></p>
+                  <p id="showTotalBad"></p>
                 </div>
               </div>
             </div>
           </div>
-          <!-- <div class="column has-text-centered">
-            <div class="is-size-5">
-              <p class="heading">SLA</p>
-              <p class="has-text-weight-bold" id="showSLAScore"></p>
-            </div>
-          </div> -->
         </div>
       </div> <!-- /.column -->
 
@@ -236,7 +224,7 @@
             <div class="field">
               <label for=""><i class="fas fa-barcode"></i> price code</label>
               <div class="control">
-                <div class="select is-medium is-dark">
+                <div class="select is-small is-dark">
                   <select name="pricecode" id="priceCode" onchange="showICFactor()">
                     <option class="selected" >------------</option>
                     <option>GC-1500XA</option>
@@ -267,7 +255,7 @@
             <div class="field">
               <label for=""><i class="fas fa-globe"></i> area</label>
               <div class="control">
-                <div class="select is-medium is-dark">
+                <div class="select is-small is-dark">
                   <select name="worldarea" id="worldArea" onchange="showICFactor()">
                     <option class="selected" >------</option>
                     <option>NA</option>
@@ -350,6 +338,37 @@
     </div> <!-- /. columns -->
   </div>
   <!-- end of Price Calculator -->
+
+</div>
+
+<div class="hero-foot">
+    <!-- <nav class="tabs is-boxed is-fullwidth">
+      <div class="container">
+        <ul>
+          <li class="is-active">
+            <a>Overview</a>
+          </li>
+          <li>
+            <a>Modifiers</a>
+          </li>
+          <li>
+            <a>Grid</a>
+          </li>
+          <li>
+            <a>Elements</a>
+          </li>
+          <li>
+            <a>Components</a>
+          </li>
+          <li>
+            <a>Layout</a>
+          </li>
+        </ul>
+      </div>
+    </nav> -->
+  </div>
+</section>
+
 
 
   <div id="snackbar"></div>

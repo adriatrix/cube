@@ -1,32 +1,18 @@
 console.log('jquery is working!');
 
 document.addEventListener('DOMContentLoaded', function () {
-
-  // Get all "navbar-burger" elements
   var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
-
-  // Check if there are any nav burgers
   if ($navbarBurgers.length > 0) {
-
-    // Add a click event on each of them
     $navbarBurgers.forEach(function ($el) {
       $el.addEventListener('click', function () {
-
-        // Get the target from the "data-target" attribute
         var target = $el.dataset.target;
         var $target = document.getElementById(target);
-
-        // Toggle the class on both the "navbar-burger" and the "navbar-menu"
         $el.classList.toggle('is-active');
         $target.classList.toggle('is-active');
-
       });
     });
   }
-
 });
-
-
 
 function get2D(num) {
     if( num.toString().length < 2 ) // Integer of less than two digits
@@ -45,28 +31,19 @@ function emptyBox() {
   document.getElementById("showcsMins").innerHTML = "00";
   document.getElementById("showcsSecs").innerHTML = "00";
 }
-
 emptyBox();
 
 function showDiff() {
-
   var csStatus = "";
-  // var date1 = document.inputForm.date1.value;
   var date1 = document.getElementById('date1').value;
-  // console.log(date1);
 
-
-  // var date1 = "01/02/2018 02:51:00";
   var date1 = date1.substr(6, 4) + "-" + date1.substr(0, 2) + "-" + date1.substr(3, 2) + "T" + date1.substr(11, 8);
-  // console.log(date1);
+
   var date1 = new Date(date1);
-  // console.log(date1);
   var date2 = new Date();
-  // console.log(date2);
 
   var diff = (date2 - date1)/1000;
   var diff = Math.abs(Math.floor(diff));
-  // console.log(diff);
 
   var days = Math.floor(diff/(24*60*60));
   var leftSec = diff - days * 24*60*60;
@@ -75,9 +52,7 @@ function showDiff() {
   days = days - (weeks *2);
 
   var day1 = date1.getDay();
-  // console.log(day1);
   var day2 = date2.getDay();
-  // console.log(day2);
 
   if (day1 - day2 > 1) {
     days = days - 2;
@@ -104,8 +79,6 @@ function showDiff() {
   var cshrs = 23 - hrs;
 
   var csdays = days;
-  // console.log(days);
-  // console.log(cshrs);
   if (cshrs < 0 || days >= 1) {
     document.getElementById("showcsDays").style.color = "red";
     document.getElementById("showcsHours").style.color = "red";
@@ -150,27 +123,84 @@ function showDiff() {
   setTimeout(showDiff,1000);
 }
 
-document.getElementById("showTotalGood").innerHTML = "good orders: " + localStorage.totalgood;
+var stg = document.getElementById("showTotalGood");
+var stb = document.getElementById("showTotalBad");
+var sto = document.getElementById("showTotalOrders");
+var sss = document.getElementById("showSLAScore");
+// localStorage.totalgood = 0;
+// localStorage.totalbad = 0;
 
-function addGood() {
-    if(typeof(Storage) !== "undefined") {
-        if (localStorage.totalgood) {
-            localStorage.totalgood = Number(localStorage.totalgood)+1;
-        } else {
-            localStorage.totalgood = 1;
-        }
-        document.getElementById("showTotalGood").innerHTML = "good: " + localStorage.totalgood;
-    } else {
-        document.getElementById("showTotalGood").innerHTML = "Sorry, your browser does not support web storage...";
-    }
+function ComputeTotalOrders() {
+  var totalorders = parseInt(localStorage.totalgood) + parseInt(localStorage.totalbad);
+  var slascore = Number((parseInt(localStorage.totalgood) / totalorders) * 100).toFixed(2);
+  sto.innerHTML = totalorders;
+  if (isNaN(slascore)) {
+    slascore = "0.00";
+  }
+  sss.innerHTML = slascore + " %";
+  // console.log(slascore);
+  if (slascore >= 80) {
+    sss.style.color = "green";
+  } else {
+    sss.style.color = "red";
+  }
 }
 
-// function addGood() {
-//   var addgood = document.getElementById('addgood').value;
-//   localStorage.setItem("totalgood", addgood+);
-//
-// }
+if(typeof(Storage) == "undefined") {
+  localStorage.totalgood = "0";
+  localStorage.totalbad = "0";
+}
+stg.innerHTML = localStorage.totalgood;
+stb.innerHTML = localStorage.totalbad;
+ComputeTotalOrders();
 
+
+function addGood() {
+    var goodvalue = document.getElementById("goodvalue");
+
+    if (goodvalue.value == "") {
+      goodvalue.value = 0;
+    }
+
+    if(typeof(Storage) !== "undefined") {
+        if (localStorage.totalgood) {
+            localStorage.totalgood = Number(localStorage.totalgood) + parseInt(goodvalue.value);
+        } else {
+            localStorage.totalgood = parseInt(goodvalue.value);
+        }
+        console.log(localStorage.totalgood);
+        if (Number(localStorage.totalgood) < 0) {
+          localStorage.totalgood = "0";
+        }
+        stg.innerHTML = localStorage.totalgood;
+    } else {
+        stg.innerHTML = "change browser";
+    }
+    ComputeTotalOrders()
+}
+
+function addBad() {
+    var badvalue = document.getElementById("badvalue");
+
+    if (badvalue.value == "") {
+      badvalue.value = 0;
+    }
+
+    if(typeof(Storage) !== "undefined") {
+        if (localStorage.totalbad) {
+            localStorage.totalbad = Number(localStorage.totalbad) + parseInt(badvalue.value);
+        } else {
+            localStorage.totalbad = parseInt(badvalue.value);
+        }
+        if (Number(localStorage.totalbad) < 0) {
+          localStorage.totalbad = "0";
+        }
+        stb.innerHTML = localStorage.totalbad;
+    } else {
+        stb.innerHTML = "change browser";
+    }
+    ComputeTotalOrders()
+}
 
 var sicf = document.getElementById("showICF");
 var sglp = document.getElementById("showGLP");
@@ -666,6 +696,7 @@ function showICFactor() {
     sglp.innerHTML = "";
     sicd.innerHTML = "";
   }
+  computeIntercoDiscPrice();
 }
 
 function fadeIn(sicf) {
@@ -735,56 +766,78 @@ function showToast() {
 
 
     var randomX = Math.floor(Math.random() * 50);
-    console.log(randomX);
-    document.getElementById("snackbar").innerHTML = quotes[randomX];
-    // Get the snackbar DIV
-    var x = document.getElementById("snackbar")
-
-    // Add the "show" class to DIV
-    x.className = "show";
-
-    // After 3 seconds, remove the show class from DIV
-    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 5000);
-
+    var snb = document.getElementById("snackbar");
+    snb.innerHTML = quotes[randomX];
+    snb.className = "show";
+    setTimeout(function(){ snb.className = snb.className.replace("show", ""); }, 5000);
     setTimeout(showToast,60000);
 }
 
+
+// $('input.show-comma').keyup(function(event) {
+//   if(event.which >= 37 && event.which <= 40) return;
+//   if(event.which == 110) return;
+//   $(this).val(function(index, value) {
+//     return value
+//     .replace(/\D/g, "")
+//     .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+//     ;
+//   });
+// });
+
+
 function checkComputations() {
-  computeDiscPrice();
   computeDiscount();
+  computeDiscPrice();
+  computeIntercoDiscPrice()
 }
 
 
 function computeDiscount() {
-  var listedPrice = document.getElementById('listedprice').value;
+  var listedPrice = Number(document.getElementById('listedprice').value);
   var discounted = document.getElementById('discount').value;
 
-  if (listedPrice == "" || (discounted == "")) {
+  if ((discounted == "")) {
     document.getElementById("discedprice").value = "";
   } else {
-    var computedDiscount = (listedPrice*((100-discounted)/100)).toFixed(2);
-    document.getElementById("discedprice").value = computedDiscount;
-    document.getElementById("discount").value = (discounted*1).toFixed(2);
+    var computedDiscount = (listedPrice*((100-discounted)/100));
+    document.getElementById("discedprice").value = computedDiscount.toFixed(2);
   }
 }
 
 function computeDiscPrice() {
+  var listedPrice = Number(document.getElementById('listedprice').value);
   var discedPrice = document.getElementById('discedprice').value;
-  var listedPrice = document.getElementById('listedprice').value;
 
   var computedDisc = (((discedPrice - listedPrice) / - listedPrice) * 100).toFixed(2);
-  console.log(computedDisc);
 
-  if (listedPrice == "" || (discedPrice == "")) {
-    document.getElementById("discount").value = "";
+  if ((listedPrice == "") || (discedPrice == "")) {
+    // document.getElementById("discount").value = "";
   } else if (computedDisc < 0){
     document.getElementById("discount").style.color = "red";
-    document.getElementById("discount").value = computedDisc;
+    document.getElementById("discount").value = parseFloat((computedDisc*1).toFixed(2));
   } else {
     document.getElementById("discount").style.color = "green";
-    document.getElementById("discount").value = computedDisc;
+    document.getElementById("discount").value = parseFloat((computedDisc*1).toFixed(2));
+  }
+}
+
+function computeIntercoDiscPrice() {
+  var listedPrice = Number(document.getElementById('listedprice').value);
+  var icFactor = sicf.value;
+  var glPrice = sglp.innerHTML;
+
+  if (glPrice == "") {
+    sglp.innerHTML = "0.1880";
+    glPrice = "0.1880";
   }
 
+  if ((listedPrice == "") || (icFactor == "")) {
+    document.getElementById("intercodiscedprice").value = "";
+  } else {
+    var computedIntercoDiscPrice = ((listedPrice/glPrice) * icFactor);
+    document.getElementById("intercodiscedprice").value = computedIntercoDiscPrice.toFixed(2);
+  }
 }
 
 $( document ).ready(function() {
@@ -797,7 +850,7 @@ $( window ).on( "load", function() {
 });
 
 if (typeof(Storage) !== "undefined") {
-    console.log( "storage support available" );
+    console.log( "storage support available");
 } else {
-  console.log( "storage unsupported" );
+  console.log( "storage unsupported");
 }

@@ -34,15 +34,15 @@ body {
 	border: 1px solid black;
 }
 
-/* input[type='number'] {
+.is-currency {
     -moz-appearance:textfield;
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
+.is-currency::-webkit-inner-spin-button,
+.is-currency::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
-} */
+}
 
 .sla-elapsed-time {
 	border-bottom: 1px solid lightgrey;

@@ -9,7 +9,8 @@ body {
 }
 
 .mainWrapper {
-	max-width: 100vw; /* vw = viewport width */
+    max-width: 100vw; /* vw = viewport width */
+    min-width: 100vw;
 	height: 100vh;
 	margin: 0 auto;
 	text-align: center;

@@ -112,15 +112,34 @@ function showDiff() {
   document.getElementById("showcsMins").innerHTML = get2D(csmin);
   document.getElementById("showcsSecs").innerHTML = get2D(csleftSec);
 
-  if (date1 == "" || isNaN(date1)) {
+  if (isNaN(date1)) {
     emptyBox();
-    document.getElementById("showDate1").innerHTML = "<span class='has-text-danger'>" + date1 + "</span>";
+    document.getElementById("showDate2").innerHTML = "";
+    console.log(date1);
+    if (!document.getElementById('date1').value)
+      document.getElementById("showDate1").innerHTML = "";
+      else document.getElementById("showDate1").innerHTML = "<span class='has-text-danger'>" + date1 + "</span>";
   } else {
     document.getElementById("showDate1").innerHTML = "<strong>from: </strong>" + date1;
     document.getElementById("showDate2").innerHTML = "<strong>to: </strong>" + date2;
   }
 
   setTimeout(showDiff,1000);
+}
+
+function changeReasons() {
+  var holdselect = document.getElementById("HoldsSelect").value;
+  switch (holdselect) {
+      case "Revised PO":
+        document.getElementById("ReasonsList").innerHTML = '<div class="select is-medium is-info"><select><option>Test2</option><option>Test1</option></select></div>';
+        break;
+      case "TSF/TAX/DOA":
+        document.getElementById("ReasonsList").innerHTML = '<div class="select is-medium is-info"><select><option>Test3</option><option>Tes44</option></select></div>';
+        break;
+  }
+  // if (holdselect == "Revised PO") {
+  //   document.getElementById("ReasonsList").innerHTML = '<div class="select is-medium is-info"><select><option>Test2</option><option>Test1</option></select></div>';
+  // } else if 
 }
 
 var stg = document.getElementById("showTotalGood");
@@ -130,77 +149,76 @@ var sss = document.getElementById("showSLAScore");
 // localStorage.totalgood = 0;
 // localStorage.totalbad = 0;
 
-function ComputeTotalOrders() {
-  var totalorders = parseInt(localStorage.totalgood) + parseInt(localStorage.totalbad);
-  var slascore = Number((parseInt(localStorage.totalgood) / totalorders) * 100).toFixed(2);
-  sto.innerHTML = totalorders;
-  if (isNaN(slascore)) {
-    slascore = "0.00";
-  }
-  sss.innerHTML = slascore + " %";
-  // console.log(slascore);
-  if (slascore >= 80) {
-    sss.style.color = "green";
-  } else {
-    sss.style.color = "red";
-  }
-}
+// function ComputeTotalOrders() {
+//   var totalorders = parseInt(localStorage.totalgood) + parseInt(localStorage.totalbad);
+//   var slascore = Number((parseInt(localStorage.totalgood) / totalorders) * 100).toFixed(2);
+//   sto.innerHTML = totalorders;
+//   if (isNaN(slascore)) {
+//     slascore = "0.00";
+//   }
+//   sss.innerHTML = slascore + " %";
+//   if (slascore >= 80) {
+//     sss.style.color = "green";
+//   } else {
+//     sss.style.color = "red";
+//   }
+// }
 
-if(typeof(Storage) == "undefined") {
-  localStorage.totalgood = "0";
-  localStorage.totalbad = "0";
-}
-stg.innerHTML = localStorage.totalgood;
-stb.innerHTML = localStorage.totalbad;
-ComputeTotalOrders();
+// if(typeof(Storage) == "undefined") {
+//   localStorage.totalgood = "0";
+//   localStorage.totalbad = "0";
+// }
+// stg.innerHTML = localStorage.totalgood;
+// stb.innerHTML = localStorage.totalbad;
+// ComputeTotalOrders();
 
 
-function addGood() {
-    var goodvalue = document.getElementById("goodvalue");
+// function addGood() {
+//     var goodvalue = document.getElementById("goodvalue");
 
-    if (goodvalue.value == "") {
-      goodvalue.value = 0;
-    }
+//     if (goodvalue.value == "") {
+//       goodvalue.value = 0;
+//     }
 
-    if(typeof(Storage) !== "undefined") {
-        if (localStorage.totalgood) {
-            localStorage.totalgood = Number(localStorage.totalgood) + parseInt(goodvalue.value);
-        } else {
-            localStorage.totalgood = parseInt(goodvalue.value);
-        }
-        console.log(localStorage.totalgood);
-        if (Number(localStorage.totalgood) < 0) {
-          localStorage.totalgood = "0";
-        }
-        stg.innerHTML = localStorage.totalgood;
-    } else {
-        stg.innerHTML = "change browser";
-    }
-    ComputeTotalOrders()
-}
+//     if(typeof(Storage) !== "undefined") {
+//         if (localStorage.totalgood) {
+//             localStorage.totalgood = Number(localStorage.totalgood) + parseInt(goodvalue.value);
+//         } else {
+//             localStorage.totalgood = parseInt(goodvalue.value);
+//         }
+//         console.log(localStorage.totalgood);
+//         if (Number(localStorage.totalgood) < 0) {
+//           localStorage.totalgood = "0";
+//         }
+//         stg.innerHTML = localStorage.totalgood;
+//     } else {
+//         stg.innerHTML = "change browser";
+//     }
+//     ComputeTotalOrders()
+// }
 
-function addBad() {
-    var badvalue = document.getElementById("badvalue");
+// function addBad() {
+//     var badvalue = document.getElementById("badvalue");
 
-    if (badvalue.value == "") {
-      badvalue.value = 0;
-    }
+//     if (badvalue.value == "") {
+//       badvalue.value = 0;
+//     }
 
-    if(typeof(Storage) !== "undefined") {
-        if (localStorage.totalbad) {
-            localStorage.totalbad = Number(localStorage.totalbad) + parseInt(badvalue.value);
-        } else {
-            localStorage.totalbad = parseInt(badvalue.value);
-        }
-        if (Number(localStorage.totalbad) < 0) {
-          localStorage.totalbad = "0";
-        }
-        stb.innerHTML = localStorage.totalbad;
-    } else {
-        stb.innerHTML = "change browser";
-    }
-    ComputeTotalOrders()
-}
+//     if(typeof(Storage) !== "undefined") {
+//         if (localStorage.totalbad) {
+//             localStorage.totalbad = Number(localStorage.totalbad) + parseInt(badvalue.value);
+//         } else {
+//             localStorage.totalbad = parseInt(badvalue.value);
+//         }
+//         if (Number(localStorage.totalbad) < 0) {
+//           localStorage.totalbad = "0";
+//         }
+//         stb.innerHTML = localStorage.totalbad;
+//     } else {
+//         stb.innerHTML = "change browser";
+//     }
+//     ComputeTotalOrders()
+// }
 
 var sicf = document.getElementById("showICF");
 var sglp = document.getElementById("showGLP");
@@ -769,7 +787,7 @@ function showToast() {
     var snb = document.getElementById("snackbar");
     snb.innerHTML = quotes[randomX];
     snb.className = "show";
-    setTimeout(function(){ snb.className = snb.className.replace("show", ""); }, 5000);
+    setTimeout(function(){ snb.className = snb.className.replace("show", ""); }, 10000);
     setTimeout(showToast,60000);
 }
 

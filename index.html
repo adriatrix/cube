@@ -59,95 +59,129 @@
 
 <div class="hero-body">
   <div class="container is-fluid">
-    <h2 class="title has-text-grey">SLA Helper</h2>
     <div class="columns">
-      <div class="column is-6">
+      <div class="column is-3">
+        <!-- <h2 class="title has-text-grey">SLA Helper</h2> -->
         <div class="columns is-multiline">
-          <div class="column is-10 is-offset-1">
+          <div class="column">
             <!-- for date/time input box -->
             <div class="has-addons has-addons-centered">
               <!-- <label for="date1">received date/time</label> -->
               <div class="control has-icons-left has-text-centered">
-                <input type="text" class="input is-medium is-info" name="date1" id="date1" value="" onchange="showDiff()" autocomplete="off" placeholder="enter received date/time here">
-                <span class="icon is-medium is-left"><i class="far fa-calendar-alt"></i></span>
+                <input type="text" class="input is-info" name="date1" id="date1" value="" onchange="showDiff()" autocomplete="off" placeholder="received date/time">
+                <span class="icon is-left"><i class="far fa-calendar-alt"></i></span>
               </div>
             </div>
           </div>
+          <!-- <div class="column is-12">
+            <div class="is-size-5 has-text-centered">
+            </div>
+          </div> -->
           <div class="column is-12">
-            <p class="has-text-centered" id="showDate1">&nbsp;</p>
-            <p class="has-text-centered" id="showDate2">&nbsp;</p>
+            <p class="has-text-centered is-size-7" id="showDate1">&nbsp;</p>
+            <p class="has-text-centered is-size-7" id="showDate2">&nbsp;</p>
+            <p class="has-text-centered is-size-5">&nbsp;
+                <span id="showStatus1"> </span>
+                <span class="has-text-weight-bold" id="showStatus2"></span>
+            </p>
           </div>
         </div>
       </div> <!-- /.column -->
-
-
-      <div class="column">
-        <div class="columns is-mobile sla-elapsed-time">
-          <div class="column">
-            <div class="is-size-5 has-text-centered">
-              <p class="heading">elapsed</p>
-              <p class="heading"><strong>time</strong></p>
-            </div>
-          </div>
+      
+      
+      <div class="column is-3">
+        <!-- <h2 class="title has-text-grey">&nbsp;</h2> -->
+        <p class="heading botborder">Elapsed Time</p>
+        <div class="columns is-mobile">
           <div class="column has-text-centered">
             <div class="is-size-5">
-              <p class="heading">Days</p>
               <p class="has-text-weight-bold" id="showDays"></p>
             </div>
           </div>
           <div class="column has-text-centered">
             <div class="is-size-5">
-              <p class="heading">Hours</p>
               <p class="has-text-weight-bold" id="showHours"></p>
             </div>
           </div>
           <div class="column has-text-centered">
             <div class="is-size-5">
-              <p class="heading">Minutes</p>
               <p class="has-text-weight-bold" id="showMins"></p>
             </div>
           </div>
           <div class="column has-text-centered">
             <div class="is-size-5">
-              <p class="heading">Seconds</p>
               <p class="has-text-weight-bold" id="showSecs"></p>
             </div>
           </div>
         </div>
-
+        
+        <p class="heading botborder">Remaining Time</p>
         <div class="columns is-mobile">
-          <div class="column">
-            <div class="is-size-5 has-text-centered">
-              <p class="heading" id="showStatus1">&nbsp;</p>
-              <p class="heading has-text-weight-bold" id="showStatus2"></p>
-            </div>
-          </div>
           <div class="column has-text-centered">
             <div class="is-size-5">
-              <p class="heading">Days</p>
               <p class="has-text-weight-bold" id="showcsDays"></p>
             </div>
           </div>
           <div class="column has-text-centered">
             <div class="is-size-5">
-              <p class="heading">Hours</p>
               <p class="has-text-weight-bold" id="showcsHours"></p>
             </div>
           </div>
           <div class="column has-text-centered">
             <div class="is-size-5">
-              <p class="heading">Minutes</p>
               <p class="has-text-weight-bold" id="showcsMins"></p>
             </div>
           </div>
           <div class="column has-text-centered">
             <div class="is-size-5">
-              <p class="heading">Seconds</p>
               <p class="has-text-weight-bold" id="showcsSecs"></p>
             </div>
           </div>
         </div>
       </div> <!-- /.column -->
+
+      <div class="column is-6">
+        <!-- <h2 class="title has-text-grey">GC Holds Namer</h2> -->
+        <div class="columns">
+          <div class="column">
+            <div class="columns">
+              <div class="column is-6">
+                <div class="control HoldsList">
+                  <div class="select is-info is-fullwidth">
+                    <select id="HoldsSelect" onchange="holdChange()">
+                      <option>select a reason</option>
+                      <option>Revised PO</option>
+                      <option>TSF/TAX/DOA</option>
+                      <option>Tech Review</option>
+                      <option>Credit Hold</option>
+                      <option>Credit Card</option>
+                      <option>CVDH/ITC</option>
+                      <option>Others</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="column is-6">
+                <div class="control is-6" id="ReasonsList">
+                  <div class="select is-info is-fullwidth">
+                    <select disabled>
+                      <option></option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="columns">
+              <div class="column is-6" id="TexyBox">
+                <textarea class="textarea is-info" disabled></textarea>
+              </div>
+              <div class="column is-6" id="CopyBox">
+                <textarea class="textarea" type="text" readonly></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <!-- <div class="column is-3">
         <div class="columns is-mobile">
@@ -199,53 +233,6 @@
   </div>
   <!-- end of SLA Helper -->
 
-  <!-- start of GC Holds Namer -->
-  <div class="container is-fluid">
-    <h2 class="title has-text-grey">GC Holds Namer</h2>
-    <div class="columns">
-      <div class="column is-6">
-        <div class="columns">
-          <div class="column is-10 is-offset-1">
-            <div class="columns">
-              <div class="column">
-                <div class="control HoldsList">
-                  <div class="select is-medium is-info">
-                    <select id="HoldsSelect" onchange="changeReasons()">
-                      <option></option>
-                      <option>Revised PO</option>
-                      <option>TSF/TAX/DOA</option>
-                      <option>Tech Review</option>
-                      <option>Credit Hold</option>
-                      <option>Credit Card</option>
-                      <option>CVDH/ITC</option>
-                      <option>Others</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-              <div class="column">
-                <div class="control is-pulled-right" id="ReasonsList">
-                  <!-- <div class="select is-medium is-info">
-                    <select>
-                      <option></option>
-                      <option>Revised PO</option>
-                      <option>TSF/TAX/DOA</option>
-                      <option>Tech Review</option>
-                      <option>Credit Hold</option>
-                      <option>Credit Card</option>
-                      <option>CVDH/ITC</option>
-                      <option>Others</option>
-                    </select>
-                  </div> -->
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> <!-- /. columns -->
-  </div>
-  <!-- end of GC Holds Namer -->
 
   <!-- start of Price Calculator -->
   <!-- <div class="container is-fluid">

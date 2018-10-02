@@ -45,10 +45,14 @@ body {
     margin: 0;
 }
 
-.sla-elapsed-time {
-	border-bottom: 1px solid lightgrey;
+.botborder {
+	border-bottom: 1px solid lightblue;
 }
 
+textarea {
+  resize: none !important;
+  font-size: 12px !important;
+}
 
 /* The snackbar - position it at the bottom and in the middle of the screen */
 #snackbar {

@@ -21,15 +21,15 @@ function get2D(num) {
 }
 
 function emptyBox() {
-  document.getElementById("showDays").innerHTML = "00";
-  document.getElementById("showHours").innerHTML = "00";
-  document.getElementById("showMins").innerHTML = "00";
-  document.getElementById("showSecs").innerHTML = "00";
+  document.getElementById("showDays").innerHTML = "00<span class='has-text-weight-normal is-size-7'>d</span>";
+  document.getElementById("showHours").innerHTML = "00<span class='has-text-weight-normal is-size-7'>h</span>";
+  document.getElementById("showMins").innerHTML = "00<span class='has-text-weight-normal is-size-7'>m</span>";
+  document.getElementById("showSecs").innerHTML = "00<span class='has-text-weight-normal is-size-7'>s</span>";
 
-  document.getElementById("showcsDays").innerHTML = "00";
-  document.getElementById("showcsHours").innerHTML = "00";
-  document.getElementById("showcsMins").innerHTML = "00";
-  document.getElementById("showcsSecs").innerHTML = "00";
+  document.getElementById("showcsDays").innerHTML = "00<span class='has-text-weight-normal is-size-7'>d</span>";
+  document.getElementById("showcsHours").innerHTML = "00<span class='has-text-weight-normal is-size-7'>h</span>";
+  document.getElementById("showcsMins").innerHTML = "00<span class='has-text-weight-normal is-size-7'>m</span>";
+  document.getElementById("showcsSecs").innerHTML = "00<span class='has-text-weight-normal is-size-7'>s</span>";
 }
 emptyBox();
 
@@ -102,44 +102,109 @@ function showDiff() {
   }
   cshrs = Math.abs(cshrs);
 
-  document.getElementById("showDays").innerHTML = get2D(days);
-  document.getElementById("showHours").innerHTML = get2D(hrs);
-  document.getElementById("showMins").innerHTML = get2D(min);
-  document.getElementById("showSecs").innerHTML = get2D(leftSec);
+  document.getElementById("showDays").innerHTML = get2D(days) + "<span class='has-text-weight-normal is-size-7'>d</span>";
+  document.getElementById("showHours").innerHTML = get2D(hrs) + "<span class='has-text-weight-normal is-size-7'>h</span>";
+  document.getElementById("showMins").innerHTML = get2D(min) + "<span class='has-text-weight-normal is-size-7'>m</span>";
+  document.getElementById("showSecs").innerHTML = get2D(leftSec) + "<span class='has-text-weight-normal is-size-7'>s</span>";
 
-  document.getElementById("showcsDays").innerHTML = get2D(csdays);
-  document.getElementById("showcsHours").innerHTML = get2D(cshrs);
-  document.getElementById("showcsMins").innerHTML = get2D(csmin);
-  document.getElementById("showcsSecs").innerHTML = get2D(csleftSec);
+  document.getElementById("showcsDays").innerHTML = get2D(csdays) + "<span class='has-text-weight-normal is-size-7'>d</span>";
+  document.getElementById("showcsHours").innerHTML = get2D(cshrs) + "<span class='has-text-weight-normal is-size-7'>h</span>";
+  document.getElementById("showcsMins").innerHTML = get2D(csmin) + "<span class='has-text-weight-normal is-size-7'>m</span>";
+  document.getElementById("showcsSecs").innerHTML = get2D(csleftSec) + "<span class='has-text-weight-normal is-size-7'>s</span>";
 
+  
   if (isNaN(date1)) {
     emptyBox();
     document.getElementById("showDate2").innerHTML = "";
-    console.log(date1);
-    if (!document.getElementById('date1').value)
+    document.getElementById("showStatus1").innerHTML = "";
+    document.getElementById("showStatus2").innerHTML = "";
+    if (!document.getElementById('date1').value) 
       document.getElementById("showDate1").innerHTML = "";
-      else document.getElementById("showDate1").innerHTML = "<span class='has-text-danger'>" + date1 + "</span>";
+    else document.getElementById("showDate1").innerHTML = "<span class='has-text-danger'>" + date1 + "</span>";
   } else {
-    document.getElementById("showDate1").innerHTML = "<strong>from: </strong>" + date1;
-    document.getElementById("showDate2").innerHTML = "<strong>to: </strong>" + date2;
+    date1 = String(date1);
+    date2 = String(date2);
+    var ddate1 = date1.split(" ");
+    var ddate2 = date2.split(" ");
+    document.getElementById("showDate1").innerHTML = "<strong>from: </strong>" + ddate1[1] + " " + ddate1[2] + ", " + ddate1[3] + " | " + ddate1[4] + " " + ddate1[5];
+    document.getElementById("showDate2").innerHTML = "<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to: </strong>" + ddate2[1] + " " + ddate2[2] + ", " + ddate2[3] + " | " + ddate2[4] + " " + ddate2[5];
   }
 
   setTimeout(showDiff,1000);
 }
 
-function changeReasons() {
+function holdChange() {
   var holdselect = document.getElementById("HoldsSelect").value;
   switch (holdselect) {
       case "Revised PO":
-        document.getElementById("ReasonsList").innerHTML = '<div class="select is-medium is-info"><select><option>Test2</option><option>Test1</option></select></div>';
+        document.getElementById("ReasonsList").innerHTML = '<div class="select is-info is-fullwidth"><select id="ReasonsSelect" onchange="reasonChange()"><option></option><option>Incorrect / No Pricing</option><option>Incorrect / No Vendor Address</option><option>Incorrect / No Payment Terms</option><option>Incorrect / No Freight Terms</option><option>Incomplete Order Information</option><option>Below-Minimum Order</option><option>No GE Terms and Conditions</option></select></div>';
+        document.getElementById("TexyBox").innerHTML = '<textarea class="textarea is-info" placeholder="Enter additional info"></textarea>';
         break;
       case "TSF/TAX/DOA":
-        document.getElementById("ReasonsList").innerHTML = '<div class="select is-medium is-info"><select><option>Test3</option><option>Tes44</option></select></div>';
+        document.getElementById("ReasonsList").innerHTML = '<div class="select is-info is-fullwidth"><select id="ReasonsSelect" onchange="reasonChange()"><option></option><option>Incomplete / No TSF</option><option>Tax Confirmation</option><option>DOA/Hotline issues</option></select></div>';
+        document.getElementById("TexyBox").innerHTML = '<textarea class="textarea is-info" placeholder="Enter additional info"></textarea>';
         break;
+      case "Tech Review":
+        document.getElementById("ReasonsList").innerHTML = '<div class="select is-info is-fullwidth"><select id="ReasonsSelect" onchange="reasonChange()"><option></option><option>Price Confirmation</option><option>Part Confirmation</option><option>No Quote Upload</option></select></div>';
+        document.getElementById("TexyBox").innerHTML = '<textarea class="textarea is-info" placeholder="Enter additional info"></textarea>';
+        break;
+      case "Credit Hold":
+        document.getElementById("ReasonsList").innerHTML = '<div class="select is-info is-fullwidth"><select id="ReasonsSelect" onchange="reasonChange()"><option></option><option>Credit Risk Shipment Hold</option><option>C1 Credit Hold</option></select></div>';
+        document.getElementById("TexyBox").innerHTML = '<textarea class="textarea is-info" placeholder="Enter additional info"></textarea>';
+        break;
+      case "Credit Card":
+        document.getElementById("ReasonsList").innerHTML = '<div class="select is-info is-fullwidth"><select id="ReasonsSelect" onchange="reasonChange()"><option></option><option>Pre-Auth Failed</option><option>Credit Card Details</option></select></div>';
+        document.getElementById("TexyBox").innerHTML = '<textarea class="textarea is-info" placeholder="Enter additional info"></textarea>';
+        break;
+      case "CVDH/ITC":
+        document.getElementById("ReasonsList").innerHTML = '<div class="select is-info is-fullwidth"><select id="ReasonsSelect" onchange="reasonChange()"><option></option><option>Waiting for CVDH</option><option>Waiting for ITC</option></select></div>';
+        document.getElementById("TexyBox").innerHTML = '<textarea class="textarea is-info" placeholder="Enter additional info"></textarea>';
+        break;
+      case "Others":
+        document.getElementById("ReasonsList").innerHTML = '<div class="select is-info is-fullwidth"><select id="ReasonsSelect" onchange="reasonChange()"><option>specify reason</option></select></div>';
+        document.getElementById("TexyBox").innerHTML = '<textarea class="textarea is-info" placeholder="Enter additional info"></textarea>';
+        break;
+      default:
+        document.getElementById("ReasonsList").innerHTML = '<div class="select is-info is-fullwidth"><select disabled><option></option></select></div>';
+        document.getElementById("TexyBox").innerHTML = '<textarea class="textarea is-info" disabled></textarea>';
   }
-  // if (holdselect == "Revised PO") {
-  //   document.getElementById("ReasonsList").innerHTML = '<div class="select is-medium is-info"><select><option>Test2</option><option>Test1</option></select></div>';
-  // } else if 
+}
+
+function reasonChange() {
+  var reasonselect = document.getElementById("ReasonsSelect").value;
+  switch (reasonselect) {
+      case "Incorrect / No Pricing":
+        document.getElementById("CopyBox").innerHTML = '<textarea class="textarea" type="text" readonly>*CD-RSNREVPO* Incorrect / No Pricing</textarea>';
+        document.getElementById("TexyBox").innerHTML = '<textarea class="textarea is-info" placeholder="Enter additional info"></textarea>';
+        break;
+      case "Incorrect / No Vendor Address":
+        document.getElementById("CopyBox").innerHTML = '<textarea class="textarea" type="text" readonly>*CD-RSNREVPO* Incorrect / No Vendor Address</textarea>';
+        document.getElementById("TexyBox").innerHTML = '<textarea class="textarea is-info" placeholder="Enter additional info"></textarea>';
+        break;
+      case "Incorrect / No Payment Terms":
+        document.getElementById("CopyBox").innerHTML = '<textarea class="textarea" type="text" readonly>*CD-RSNREVPO* Incorrect / No Payment Terms</textarea>';
+        document.getElementById("TexyBox").innerHTML = '<textarea class="textarea is-info" placeholder="Enter additional info"></textarea>';
+        break;
+      case "Incorrect / No Freight Terms":
+        document.getElementById("CopyBox").innerHTML = '<textarea class="textarea" type="text" readonly>*CD-RSNREVPO* Incorrect / No Freight Terms</textarea>';
+        document.getElementById("TexyBox").innerHTML = '<textarea class="textarea is-info" placeholder="Enter additional info"></textarea>';
+        break;
+      case "Incomplete Order Information":
+        document.getElementById("CopyBox").innerHTML = '<textarea class="textarea" type="text" readonly>*CD-RSNREVPO* Incomplete Order Information</textarea>';
+        document.getElementById("TexyBox").innerHTML = '<textarea class="textarea is-info" placeholder="Enter additional info"></textarea>';
+        break;
+      case "Below-Minimum Order":
+        document.getElementById("CopyBox").innerHTML = '<textarea class="textarea" type="text" readonly>*CD-RSNREVPO* Below-Minimum Order</textarea>';
+        document.getElementById("TexyBox").innerHTML = '<textarea class="textarea is-info" placeholder="Enter additional info"></textarea>';
+        break;
+      case "No GE Terms and Conditions":
+        document.getElementById("CopyBox").innerHTML = '<textarea class="textarea" type="text" readonly>*CD-RSNREVPO* No GE Terms and Conditions</textarea>';
+        document.getElementById("TexyBox").innerHTML = '<textarea class="textarea is-info" placeholder="Enter additional info"></textarea>';
+        break;
+      default:
+        // document.getElementById("ReasonsList").innerHTML = '<div class="select is-info is-fullwidth"><select><option></option></select></div>';
+        document.getElementById("TexyBox").innerHTML = '<textarea class="textarea is-info"></textarea>';
+  }
 }
 
 var stg = document.getElementById("showTotalGood");

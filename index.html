@@ -46,7 +46,7 @@
             <hr class="navbar-divider">
             <div class="navbar-item">
               <div>
-                <p class="is-size-6-desktop"><strong>GQube ver. <span class="has-text-info">0.3.1</span></strong></p>
+                <p class="is-size-6-desktop"><strong>GQube ver. <span class="has-text-info">0.3.2</span></strong></p>
                 <small><a class="bd-view-all-versions" href="docs/versions.html">View all versions</a></small>
               </div>
             </div>
@@ -140,23 +140,23 @@
         </div>
       </div> <!-- /.column -->
 
-      <div class="column is-6">
+      <div class="column is-6 box">
         <!-- <h2 class="title has-text-grey">GC Holds Namer</h2> -->
         <div class="columns">
           <div class="column">
             <div class="columns">
               <div class="column is-6">
-                <div class="control HoldsList">
+                <div class="control" id="HoldsList">
                   <div class="select is-info is-fullwidth">
                     <select id="HoldsSelect" onchange="holdChange()">
-                      <option>select a reason</option>
-                      <option>Revised PO</option>
+                      <option>select a hold</option>
+                      <option>REVISED PO</option>
                       <option>TSF/TAX/DOA</option>
-                      <option>Tech Review</option>
-                      <option>Credit Hold</option>
-                      <option>Credit Card</option>
+                      <option>TECH REVIEW</option>
+                      <option>CREDIT RISK</option>
+                      <option>CREDIT CARD</option>
                       <option>CVDH/ITC</option>
-                      <option>Others</option>
+                      <option>OTHERS</option>
                     </select>
                   </div>
                 </div>
@@ -176,7 +176,7 @@
                 <textarea class="textarea is-info" disabled></textarea>
               </div>
               <div class="column is-6" id="CopyBox">
-                <textarea class="textarea" type="text" readonly></textarea>
+                <textarea class="textarea" type="text" readonly id="CopyBoxText"></textarea>
               </div>
             </div>
           </div>

@@ -133,90 +133,175 @@ function showDiff() {
   setTimeout(showDiff,1000);
 }
 
+var copytext = document.getElementById("CopyBoxText").value + " ";
+console.log (copytext);
+
+function textChange() {
+  var texytext = document.getElementById("TexyBoxText").value;
+  var holdselect = document.getElementById("HoldsSelect").value;
+  if (holdselect == "TSF/TAX/DOA") {
+    copytext = String(copytext);
+    var ccopytext = copytext.split("*");
+    var newcopytext = "*" + ccopytext[1] + "* " + texytext + "&#13;*" + ccopytext[3] + "* " + texytext + " &#13;*" + ccopytext[5] + "* " + texytext;
+    document.getElementById("CopyBoxText").innerHTML = newcopytext;
+  } else if (holdselect == "CVDH/ITC") {
+    copytext = String(copytext);
+    var ccopytext = copytext.split("*");
+    var newcopytext = "*" + ccopytext[1] + "* " + texytext + "&#13;*" + ccopytext[3] + "* " + texytext;
+    document.getElementById("CopyBoxText").innerHTML = newcopytext;
+  } else {
+    var newcopytext = copytext + texytext;
+    // console.log (newcopytext);
+    document.getElementById("CopyBoxText").innerHTML = newcopytext;
+  }
+}
+
 function holdChange() {
   var holdselect = document.getElementById("HoldsSelect").value;
   switch (holdselect) {
-      case "Revised PO":
-        document.getElementById("ReasonsList").innerHTML = '<div class="select is-info is-fullwidth"><select id="ReasonsSelect" onchange="reasonChange()"><option></option><option>Incorrect / No Pricing</option><option>Incorrect / No Vendor Address</option><option>Incorrect / No Payment Terms</option><option>Incorrect / No Freight Terms</option><option>Incomplete Order Information</option><option>Below-Minimum Order</option><option>No GE Terms and Conditions</option></select></div>';
-        document.getElementById("TexyBox").innerHTML = '<textarea class="textarea is-info" placeholder="Enter additional info"></textarea>';
+    case "REVISED PO":
+      document.getElementById("ReasonsList").innerHTML = '<div class="select is-info is-fullwidth"><select id="ReasonsSelect" onchange="reasonChange()"><option>select a reason</option><option>INCORRECT / NO PRICING</option><option>INCORRECT / NO VENDOR ADDRESS</option><option>INCORRECT / NO PAY TERMS</option><option>INCORRECT / NO FREIGHT TERMS</option><option>INCOMPLETE ORDER INFORMATION</option><option>BELOW-MINIMUM ORDER</option><option>NO G.E. TERMS</option></select></div>';
+      document.getElementById("TexyBox").innerHTML = '<textarea onkeyup="textChange()" class="textarea is-info" placeholder="Enter additional info" id="TexyBoxText"></textarea>';
+      document.getElementById("CopyBox").innerHTML = '<textarea class="textarea" type="text" readonly id="CopyBoxText">*CD-REVPO*</textarea>';
+      break;
+    case "TSF/TAX/DOA":
+      document.getElementById("ReasonsList").innerHTML = '<div class="select is-info is-fullwidth"><select id="ReasonsSelect" onchange="reasonChange()"><option>select a reason</option><option>INCOMPLETE / NO TSF</option><option>TAX CONFIRMATION</option><option>DOA / HOTLINE ISSUES</option></select></div>';
+      document.getElementById("TexyBox").innerHTML = '<textarea onkeyup="textChange()" class="textarea is-info" placeholder="Enter additional info" id="TexyBoxText"></textarea>';
+      document.getElementById("CopyBox").innerHTML = '<textarea class="textarea" type="text" readonly id="CopyBoxText">*CD-TSF*&#13;*CD-TAX*&#13;*CD-DOA*</textarea>';
+      break;
+    case "TECH REVIEW":
+      document.getElementById("ReasonsList").innerHTML = '<div class="select is-info is-fullwidth"><select id="ReasonsSelect" onchange="reasonChange()"><option>select a reason</option><option>PRICE CONFIRMATION</option><option>PART CONFIRMATION</option><option>NO QUOTE UPLOADED</option></select></div>';
+      document.getElementById("TexyBox").innerHTML = '<textarea onkeyup="textChange()" class="textarea is-info" placeholder="Enter additional info" id="TexyBoxText"></textarea>';
+      document.getElementById("CopyBox").innerHTML = '<textarea class="textarea" type="text" readonly id="CopyBoxText">*NCD-TECH*</textarea>';
+      break;
+    case "CREDIT RISK":
+      document.getElementById("ReasonsList").innerHTML = '<div class="select is-info is-fullwidth"><select id="ReasonsSelect" onchange="reasonChange()"><option>select a reason</option><option>CREDIT SHIPMENT HOLD</option><option>C1 CREDIT HOLD</option></select></div>';
+      document.getElementById("TexyBox").innerHTML = '<textarea onkeyup="textChange()" class="textarea is-info" placeholder="Enter additional info" id="TexyBoxText"></textarea>';
+      document.getElementById("CopyBox").innerHTML = '<textarea class="textarea" type="text" readonly id="CopyBoxText">*CD-CRISK&#13;*NCD-C1*</textarea>';
+      break;
+    case "CREDIT CARD":
+      document.getElementById("ReasonsList").innerHTML = '<div class="select is-info is-fullwidth"><select id="ReasonsSelect" onchange="reasonChange()"><option>select a reason</option><option>PRE-AUTH FAILED</option><option>INCOMPLETE CARD DETAILS</option></select></div>';
+      document.getElementById("TexyBox").innerHTML = '<textarea onkeyup="textChange()" class="textarea is-info" placeholder="Enter additional info" id="TexyBoxText"></textarea>';
+      document.getElementById("CopyBox").innerHTML = '<textarea class="textarea" type="text" readonly id="CopyBoxText">*CD-CC*</textarea>';
+      break;
+    case "CVDH/ITC":
+      document.getElementById("ReasonsList").innerHTML = '<div class="select is-info is-fullwidth"><select id="ReasonsSelect" onchange="reasonChange()"><option>select a reason</option><option>WAITING FOR CVDH</option><option>WAITING FOR ITC</option></select></div>';
+      document.getElementById("TexyBox").innerHTML = '<textarea onkeyup="textChange()" class="textarea is-info" placeholder="Enter additional info" id="TexyBoxText"></textarea>';
+      document.getElementById("CopyBox").innerHTML = '<textarea class="textarea" type="text" readonly id="CopyBoxText">*NCD-CVDH*&#13;*NCD-ITC*</textarea>';
+      break;
+    case "OTHERS":
+      document.getElementById("ReasonsList").innerHTML = '<div class="select is-info is-fullwidth"><select id="ReasonsSelect" onchange="reasonChange()" disabled><option>specify reason</option></select></div>';
+      document.getElementById("TexyBox").innerHTML = '<textarea onkeyup="textChange()" class="textarea is-info" placeholder="Enter additional info" id="TexyBoxText"></textarea>';
+      document.getElementById("CopyBox").innerHTML = '<textarea class="textarea" type="text" readonly id="CopyBoxText">*NCD-OTHERS*</textarea>';
+      break;
+    default:
+      document.getElementById("ReasonsList").innerHTML = '<div class="select is-info is-fullwidth"><select disabled><option></option></select></div>';
+      document.getElementById("TexyBox").innerHTML = '<textarea onkeyup="textChange()" class="textarea is-info" disabled></textarea>';
+      document.getElementById("CopyBox").innerHTML = '<textarea class="textarea" type="text" readonly id="CopyBoxText"></textarea>';
+      }
+      copytext = document.getElementById("CopyBoxText").value + " ";
+      console.log (copytext);
+    }
+    
+    function reasonChange() {
+      var reasonselect = document.getElementById("ReasonsSelect").value;
+      switch (reasonselect) {
+        case "INCORRECT / NO PRICING":
+        document.getElementById("CopyBox").innerHTML = '<textarea class="textarea" type="text" readonly id="CopyBoxText">*CD-REVPO* Incorrect / No Pricing.</textarea>';
+        document.getElementById("TexyBox").innerHTML = '<textarea onkeyup="textChange()" class="textarea is-info" placeholder="Enter additional info" id="TexyBoxText"></textarea>';
         break;
-      case "TSF/TAX/DOA":
-        document.getElementById("ReasonsList").innerHTML = '<div class="select is-info is-fullwidth"><select id="ReasonsSelect" onchange="reasonChange()"><option></option><option>Incomplete / No TSF</option><option>Tax Confirmation</option><option>DOA/Hotline issues</option></select></div>';
-        document.getElementById("TexyBox").innerHTML = '<textarea class="textarea is-info" placeholder="Enter additional info"></textarea>';
+        case "INCORRECT / NO VENDOR ADDRESS":
+        document.getElementById("CopyBox").innerHTML = '<textarea class="textarea" type="text" readonly id="CopyBoxText">*CD-REVPO* Incorrect / No Vendor Address.</textarea>';
+        document.getElementById("TexyBox").innerHTML = '<textarea onkeyup="textChange()" class="textarea is-info" placeholder="Enter additional info" id="TexyBoxText"></textarea>';
         break;
-      case "Tech Review":
-        document.getElementById("ReasonsList").innerHTML = '<div class="select is-info is-fullwidth"><select id="ReasonsSelect" onchange="reasonChange()"><option></option><option>Price Confirmation</option><option>Part Confirmation</option><option>No Quote Upload</option></select></div>';
-        document.getElementById("TexyBox").innerHTML = '<textarea class="textarea is-info" placeholder="Enter additional info"></textarea>';
+        case "INCORRECT / NO PAY TERMS":
+        document.getElementById("CopyBox").innerHTML = '<textarea class="textarea" type="text" readonly id="CopyBoxText">*CD-REVPO* Incorrect / No Payment Terms.</textarea>';
+        document.getElementById("TexyBox").innerHTML = '<textarea onkeyup="textChange()" class="textarea is-info" placeholder="Enter additional info" id="TexyBoxText"></textarea>';
         break;
-      case "Credit Hold":
-        document.getElementById("ReasonsList").innerHTML = '<div class="select is-info is-fullwidth"><select id="ReasonsSelect" onchange="reasonChange()"><option></option><option>Credit Risk Shipment Hold</option><option>C1 Credit Hold</option></select></div>';
-        document.getElementById("TexyBox").innerHTML = '<textarea class="textarea is-info" placeholder="Enter additional info"></textarea>';
+        case "INCORRECT / NO FREIGHT TERMS":
+        document.getElementById("CopyBox").innerHTML = '<textarea class="textarea" type="text" readonly id="CopyBoxText">*CD-REVPO* Incorrect / No Freight Terms.</textarea>';
+        document.getElementById("TexyBox").innerHTML = '<textarea onkeyup="textChange()" class="textarea is-info" placeholder="Enter additional info" id="TexyBoxText"></textarea>';
         break;
-      case "Credit Card":
-        document.getElementById("ReasonsList").innerHTML = '<div class="select is-info is-fullwidth"><select id="ReasonsSelect" onchange="reasonChange()"><option></option><option>Pre-Auth Failed</option><option>Credit Card Details</option></select></div>';
-        document.getElementById("TexyBox").innerHTML = '<textarea class="textarea is-info" placeholder="Enter additional info"></textarea>';
+        case "INCOMPLETE ORDER INFORMATION":
+        document.getElementById("CopyBox").innerHTML = '<textarea class="textarea" type="text" readonly id="CopyBoxText">*CD-REVPO* Incomplete Order Information.</textarea>';
+        document.getElementById("TexyBox").innerHTML = '<textarea onkeyup="textChange()" class="textarea is-info" placeholder="Enter additional info" id="TexyBoxText"></textarea>';
         break;
-      case "CVDH/ITC":
-        document.getElementById("ReasonsList").innerHTML = '<div class="select is-info is-fullwidth"><select id="ReasonsSelect" onchange="reasonChange()"><option></option><option>Waiting for CVDH</option><option>Waiting for ITC</option></select></div>';
-        document.getElementById("TexyBox").innerHTML = '<textarea class="textarea is-info" placeholder="Enter additional info"></textarea>';
+        case "BELOW-MINIMUM ORDER":
+        document.getElementById("CopyBox").innerHTML = '<textarea class="textarea" type="text" readonly id="CopyBoxText">*CD-REVPO* Below-Minimum Order.</textarea>';
+        document.getElementById("TexyBox").innerHTML = '<textarea onkeyup="textChange()" class="textarea is-info" placeholder="Enter additional info" id="TexyBoxText"></textarea>';
         break;
-      case "Others":
-        document.getElementById("ReasonsList").innerHTML = '<div class="select is-info is-fullwidth"><select id="ReasonsSelect" onchange="reasonChange()"><option>specify reason</option></select></div>';
-        document.getElementById("TexyBox").innerHTML = '<textarea class="textarea is-info" placeholder="Enter additional info"></textarea>';
+        case "NO G.E. TERMS":
+        document.getElementById("CopyBox").innerHTML = '<textarea class="textarea" type="text" readonly id="CopyBoxText">*CD-REVPO* No GE Terms and Conditions.</textarea>';
+        document.getElementById("TexyBox").innerHTML = '<textarea onkeyup="textChange()" class="textarea is-info" placeholder="Enter additional info" id="TexyBoxText"></textarea>';
         break;
-      default:
+        case "INCOMPLETE / NO TSF":
+        document.getElementById("CopyBox").innerHTML = '<textarea class="textarea" type="text" readonly id="CopyBoxText">*CD-TSF* Incomplete / No TSF.</textarea>';
+        document.getElementById("TexyBox").innerHTML = '<textarea onkeyup="textChange()" class="textarea is-info" placeholder="Enter additional info" id="TexyBoxText"></textarea>';
+        break;
+        case "TAX CONFIRMATION":
+        document.getElementById("CopyBox").innerHTML = '<textarea class="textarea" type="text" readonly id="CopyBoxText">*CD-TAX* Tax confirmation.</textarea>';
+        document.getElementById("TexyBox").innerHTML = '<textarea onkeyup="textChange()" class="textarea is-info" placeholder="Enter additional info" id="TexyBoxText"></textarea>';
+        break;
+        case "DOA / HOTLINE ISSUES":
+        document.getElementById("CopyBox").innerHTML = '<textarea class="textarea" type="text" readonly id="CopyBoxText">*CD-DOA* Invalid / No DOA provided.</textarea>';
+        document.getElementById("TexyBox").innerHTML = '<textarea onkeyup="textChange()" class="textarea is-info" placeholder="Enter additional info" id="TexyBoxText"></textarea>';
+        break;
+        case "PRICE CONFIRMATION":
+        document.getElementById("CopyBox").innerHTML = '<textarea class="textarea" type="text" readonly id="CopyBoxText">*NCD-TECH* Price confirmation.</textarea>';
+        document.getElementById("TexyBox").innerHTML = '<textarea onkeyup="textChange()" class="textarea is-info" placeholder="Enter additional info" id="TexyBoxText"></textarea>';
+        break;
+        case "PART CONFIRMATION":
+        document.getElementById("CopyBox").innerHTML = '<textarea class="textarea" type="text" readonly id="CopyBoxText">*NCD-TECH* Part number confirmation.</textarea>';
+        document.getElementById("TexyBox").innerHTML = '<textarea onkeyup="textChange()" class="textarea is-info" placeholder="Enter additional info" id="TexyBoxText"></textarea>';
+        break;
+        case "NO QUOTE UPLOADED":
+        document.getElementById("CopyBox").innerHTML = '<textarea class="textarea" type="text" readonly id="CopyBoxText">*NCD-TECH* Requesting Quote, not in OCM.</textarea>';
+        document.getElementById("TexyBox").innerHTML = '<textarea onkeyup="textChange()" class="textarea is-info" placeholder="Enter additional info" id="TexyBoxText"></textarea>';
+        break;
+        case "CREDIT SHIPMENT HOLD":
+        document.getElementById("CopyBox").innerHTML = '<textarea class="textarea" type="text" readonly id="CopyBoxText">*CD-CRISK* Credit shipment hold due to credit limit issues.</textarea>';
+        document.getElementById("TexyBox").innerHTML = '<textarea onkeyup="textChange()" class="textarea is-info" placeholder="Enter additional info" id="TexyBoxText"></textarea>';
+        break;
+        case "C1 CREDIT HOLD":
+        document.getElementById("CopyBox").innerHTML = '<textarea class="textarea" type="text" readonly id="CopyBoxText">*NCD-C1* Credit Hold pending release.</textarea>';
+        document.getElementById("TexyBox").innerHTML = '<textarea onkeyup="textChange()" class="textarea is-info" placeholder="Enter additional info" id="TexyBoxText"></textarea>';
+        break;
+        case "PRE-AUTH FAILED":
+        document.getElementById("CopyBox").innerHTML = '<textarea class="textarea" type="text" readonly id="CopyBoxText">*CD-CC* Pre-authorization failed.</textarea>';
+        document.getElementById("TexyBox").innerHTML = '<textarea onkeyup="textChange()" class="textarea is-info" placeholder="Enter additional info" id="TexyBoxText"></textarea>';
+        break;
+        case "INCOMPLETE CARD DETAILS":
+        document.getElementById("CopyBox").innerHTML = '<textarea class="textarea" type="text" readonly id="CopyBoxText">*CD-CC* Incorrect / Incomplete Credit Card details.</textarea>';
+        document.getElementById("TexyBox").innerHTML = '<textarea onkeyup="textChange()" class="textarea is-info" placeholder="Enter additional info" id="TexyBoxText"></textarea>';
+        break;
+        case "WAITING FOR CVDH":
+        document.getElementById("CopyBox").innerHTML = '<textarea class="textarea" type="text" readonly id="CopyBoxText">*NCD-CVDH* Waiting for CVDH to setup address.</textarea>';
+        document.getElementById("TexyBox").innerHTML = '<textarea onkeyup="textChange()" class="textarea is-info" placeholder="Enter additional info" id="TexyBoxText"></textarea>';
+        break;
+        case "WAITING FOR ITC":
+        document.getElementById("CopyBox").innerHTML = '<textarea class="textarea" type="text" readonly id="CopyBoxText">*NCD-ITC* Waiting for ITC approval.</textarea>';
+        document.getElementById("TexyBox").innerHTML = '<textarea onkeyup="textChange()" class="textarea is-info" placeholder="Enter additional info" id="TexyBoxText"></textarea>';
+        break;
+        default:
+        document.getElementById("HoldsList").innerHTML = '<div class="select is-info is-fullwidth"><select id="HoldsSelect" onchange="holdChange()"><option>select a hold</option><option>REVISED PO</option><option>TSF/TAX/DOA</option><option>TECH REVIEW</option><option>CREDIT RISK</option><option>CREDIT CARD</option><option>CVDH/ITC</option><option>OTHERS</option></select></div>';
         document.getElementById("ReasonsList").innerHTML = '<div class="select is-info is-fullwidth"><select disabled><option></option></select></div>';
-        document.getElementById("TexyBox").innerHTML = '<textarea class="textarea is-info" disabled></textarea>';
-  }
-}
-
-function reasonChange() {
-  var reasonselect = document.getElementById("ReasonsSelect").value;
-  switch (reasonselect) {
-      case "Incorrect / No Pricing":
-        document.getElementById("CopyBox").innerHTML = '<textarea class="textarea" type="text" readonly>*CD-RSNREVPO* Incorrect / No Pricing</textarea>';
-        document.getElementById("TexyBox").innerHTML = '<textarea class="textarea is-info" placeholder="Enter additional info"></textarea>';
-        break;
-      case "Incorrect / No Vendor Address":
-        document.getElementById("CopyBox").innerHTML = '<textarea class="textarea" type="text" readonly>*CD-RSNREVPO* Incorrect / No Vendor Address</textarea>';
-        document.getElementById("TexyBox").innerHTML = '<textarea class="textarea is-info" placeholder="Enter additional info"></textarea>';
-        break;
-      case "Incorrect / No Payment Terms":
-        document.getElementById("CopyBox").innerHTML = '<textarea class="textarea" type="text" readonly>*CD-RSNREVPO* Incorrect / No Payment Terms</textarea>';
-        document.getElementById("TexyBox").innerHTML = '<textarea class="textarea is-info" placeholder="Enter additional info"></textarea>';
-        break;
-      case "Incorrect / No Freight Terms":
-        document.getElementById("CopyBox").innerHTML = '<textarea class="textarea" type="text" readonly>*CD-RSNREVPO* Incorrect / No Freight Terms</textarea>';
-        document.getElementById("TexyBox").innerHTML = '<textarea class="textarea is-info" placeholder="Enter additional info"></textarea>';
-        break;
-      case "Incomplete Order Information":
-        document.getElementById("CopyBox").innerHTML = '<textarea class="textarea" type="text" readonly>*CD-RSNREVPO* Incomplete Order Information</textarea>';
-        document.getElementById("TexyBox").innerHTML = '<textarea class="textarea is-info" placeholder="Enter additional info"></textarea>';
-        break;
-      case "Below-Minimum Order":
-        document.getElementById("CopyBox").innerHTML = '<textarea class="textarea" type="text" readonly>*CD-RSNREVPO* Below-Minimum Order</textarea>';
-        document.getElementById("TexyBox").innerHTML = '<textarea class="textarea is-info" placeholder="Enter additional info"></textarea>';
-        break;
-      case "No GE Terms and Conditions":
-        document.getElementById("CopyBox").innerHTML = '<textarea class="textarea" type="text" readonly>*CD-RSNREVPO* No GE Terms and Conditions</textarea>';
-        document.getElementById("TexyBox").innerHTML = '<textarea class="textarea is-info" placeholder="Enter additional info"></textarea>';
-        break;
-      default:
-        // document.getElementById("ReasonsList").innerHTML = '<div class="select is-info is-fullwidth"><select><option></option></select></div>';
-        document.getElementById("TexyBox").innerHTML = '<textarea class="textarea is-info"></textarea>';
-  }
-}
-
-var stg = document.getElementById("showTotalGood");
-var stb = document.getElementById("showTotalBad");
-var sto = document.getElementById("showTotalOrders");
-var sss = document.getElementById("showSLAScore");
-// localStorage.totalgood = 0;
-// localStorage.totalbad = 0;
-
-// function ComputeTotalOrders() {
-//   var totalorders = parseInt(localStorage.totalgood) + parseInt(localStorage.totalbad);
-//   var slascore = Number((parseInt(localStorage.totalgood) / totalorders) * 100).toFixed(2);
+        document.getElementById("TexyBox").innerHTML = '<textarea onkeyup="textChange()" class="textarea is-info" disabled></textarea>';
+        document.getElementById("CopyBox").innerHTML = '<textarea class="textarea" type="text" readonly id="CopyBoxText"></textarea>';
+      }
+      copytext = document.getElementById("CopyBoxText").value + " ";
+      console.log (copytext);
+    }
+    
+    var stg = document.getElementById("showTotalGood");
+    var stb = document.getElementById("showTotalBad");
+    var sto = document.getElementById("showTotalOrders");
+    var sss = document.getElementById("showSLAScore");
+    // localStorage.totalgood = 0;
+    // localStorage.totalbad = 0;
+    
+    // function ComputeTotalOrders() {
+      //   var totalorders = parseInt(localStorage.totalgood) + parseInt(localStorage.totalbad);
+      //   var slascore = Number((parseInt(localStorage.totalgood) / totalorders) * 100).toFixed(2);
 //   sto.innerHTML = totalorders;
 //   if (isNaN(slascore)) {
 //     slascore = "0.00";

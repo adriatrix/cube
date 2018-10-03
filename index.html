@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 
-  <title>GQube</title>
+  <title>GCube</title>
 
   <!-- imports bulma css framework -->
   <link rel="stylesheet" type="text/css" href="css/bulma-0.7.1/css/bulma.css">
@@ -24,7 +24,7 @@
   <nav class="navbar is-grey" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item" href="index.html">
-        <img src="img/cube.png" alt="GQube: an everyday tool for your everday tool" width="28" height="28">
+        <img src="img/cube.png" alt="GCube: an everyday tool for your everday tool" width="28" height="28">
       </a>
 
       <button class="button navbar-burger is-white" data-target="navMenu">
@@ -46,7 +46,7 @@
             <hr class="navbar-divider">
             <div class="navbar-item">
               <div>
-                <p class="is-size-6-desktop"><strong>GQube ver. <span class="has-text-info">0.3.2</span></strong></p>
+                <p class="is-size-6-desktop"><strong>GCube ver. <span class="has-text-info">0.3.3</span></strong></p>
                 <small><a class="bd-view-all-versions" href="docs/versions.html">View all versions</a></small>
               </div>
             </div>
@@ -67,9 +67,12 @@
             <!-- for date/time input box -->
             <div class="has-addons has-addons-centered">
               <!-- <label for="date1">received date/time</label> -->
-              <div class="control has-icons-left has-text-centered">
-                <input type="text" class="input is-info" name="date1" id="date1" value="" onchange="showDiff()" autocomplete="off" placeholder="received date/time">
-                <span class="icon is-left"><i class="far fa-calendar-alt"></i></span>
+              <div class="field">
+                <div class="control has-icons-left has-text-centered">
+                  <input type="text" class="input is-info" name="date1" id="date1" value="" onchange="showDiff()" autocomplete="off" placeholder="received date/time">
+                  <span class="icon is-left"><i class="far fa-calendar-alt"></i></span>
+                </div>
+                <p class="help is-secondary" id="exampleDate"></p>
               </div>
             </div>
           </div>
@@ -146,27 +149,33 @@
           <div class="column">
             <div class="columns">
               <div class="column is-6">
-                <div class="control" id="HoldsList">
-                  <div class="select is-info is-fullwidth">
-                    <select id="HoldsSelect" onchange="holdChange()">
-                      <option>select a hold</option>
-                      <option>REVISED PO</option>
-                      <option>TSF/TAX/DOA</option>
-                      <option>TECH REVIEW</option>
-                      <option>CREDIT RISK</option>
-                      <option>CREDIT CARD</option>
-                      <option>CVDH/ITC</option>
-                      <option>OTHERS</option>
-                    </select>
+                <div class="field">
+                  <div class="control has-icons-left" id="HoldsList">
+                    <div class="select is-info is-fullwidth">
+                      <select id="HoldsSelect" onchange="holdChange()">
+                        <option>select a hold</option>
+                        <option>REVISED PO</option>
+                        <option>TSF/TAX/DOA</option>
+                        <option>TECH REVIEW</option>
+                        <option>CREDIT RISK</option>
+                        <option>CREDIT CARD</option>
+                        <option>CVDH/ITC</option>
+                        <option>OTHERS</option>
+                      </select>
+                    </div>
+                    <span class="icon is-small is-left">1.</i></span>
                   </div>
                 </div>
               </div>
               <div class="column is-6">
-                <div class="control is-6" id="ReasonsList">
-                  <div class="select is-info is-fullwidth">
-                    <select disabled>
-                      <option></option>
-                    </select>
+                <div class="field">
+                  <div class="control is-6 has-icons-left" id="ReasonsList">
+                    <div class="select is-info is-fullwidth">
+                      <select disabled>
+                        <option></option>
+                      </select>
+                    </div>
+                    <span class="icon is-small is-left">2.</i></span>
                   </div>
                 </div>
               </div>

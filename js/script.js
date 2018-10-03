@@ -15,9 +15,9 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function get2D(num) {
-    if( num.toString().length < 2 ) // Integer of less than two digits
-        return "0" + num; // Prepend a zero!
-    return num.toString(); // return string for consistency
+  if( num.toString().length < 2 ) // Integer of less than two digits
+  return "0" + num; // Prepend a zero!
+  return num.toString(); // return string for consistency
 }
 
 function emptyBox() {
@@ -25,12 +25,63 @@ function emptyBox() {
   document.getElementById("showHours").innerHTML = "00<span class='has-text-weight-normal is-size-7'>h</span>";
   document.getElementById("showMins").innerHTML = "00<span class='has-text-weight-normal is-size-7'>m</span>";
   document.getElementById("showSecs").innerHTML = "00<span class='has-text-weight-normal is-size-7'>s</span>";
-
+  
   document.getElementById("showcsDays").innerHTML = "00<span class='has-text-weight-normal is-size-7'>d</span>";
   document.getElementById("showcsHours").innerHTML = "00<span class='has-text-weight-normal is-size-7'>h</span>";
   document.getElementById("showcsMins").innerHTML = "00<span class='has-text-weight-normal is-size-7'>m</span>";
   document.getElementById("showcsSecs").innerHTML = "00<span class='has-text-weight-normal is-size-7'>s</span>";
+  
 }
+
+function getDateNow() {
+  var datenow = new Date();
+  datenow = String(datenow);
+  var ddatenow = datenow.split(" ");
+
+  switch (ddatenow[1]) {
+    case "Jan": 
+      ddatenow[1] = "01";
+      break;
+    case "Feb": 
+      ddatenow[1] = "02";
+      break;
+    case "Mar": 
+      ddatenow[1] = "03";
+      break;
+    case "Apr": 
+      ddatenow[1] = "04";
+      break;
+    case "May": 
+      ddatenow[1] = "05";
+      break;
+    case "Jun": 
+      ddatenow[1] = "06";
+      break;
+    case "Jul": 
+      ddatenow[1] = "07";
+      break;
+    case "Aug": 
+      ddatenow[1] = "08";
+      break;
+    case "Sep": 
+      ddatenow[1] = "09";
+      break;
+    case "Oct": 
+      ddatenow[1] = "10";
+      break;
+    case "Nov": 
+      ddatenow[1] = "11";
+      break;
+    case "Dec": 
+      ddatenow[1] = "12";
+      break;
+    default:
+  }
+  document.getElementById("exampleDate").innerHTML = " " + ddatenow[1] + "/" + ddatenow[2] + "/" + ddatenow[3] + " " + ddatenow[4];
+  setTimeout(getDateNow, 1000);
+}
+
+getDateNow();
 emptyBox();
 
 function showDiff() {
@@ -129,7 +180,7 @@ function showDiff() {
     document.getElementById("showDate1").innerHTML = "<strong>from: </strong>" + ddate1[1] + " " + ddate1[2] + ", " + ddate1[3] + " | " + ddate1[4] + " " + ddate1[5];
     document.getElementById("showDate2").innerHTML = "<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to: </strong>" + ddate2[1] + " " + ddate2[2] + ", " + ddate2[3] + " | " + ddate2[4] + " " + ddate2[5];
   }
-
+  getDateNow();
   setTimeout(showDiff,1000);
 }
 
@@ -139,15 +190,21 @@ console.log (copytext);
 function textChange() {
   var texytext = document.getElementById("TexyBoxText").value;
   var holdselect = document.getElementById("HoldsSelect").value;
-  if (holdselect == "TSF/TAX/DOA") {
+  var reasonselect = document.getElementById("ReasonsSelect").value;
+  if (holdselect == "TSF/TAX/DOA" && reasonselect == "select a reason") {
     copytext = String(copytext);
     var ccopytext = copytext.split("*");
-    var newcopytext = "*" + ccopytext[1] + "* " + texytext + "&#13;*" + ccopytext[3] + "* " + texytext + " &#13;*" + ccopytext[5] + "* " + texytext;
+    var newcopytext = "*" + ccopytext[1] + "* " + texytext + "\r*" + ccopytext[3] + "* " + texytext + " \r*" + ccopytext[5] + "* " + texytext;
     document.getElementById("CopyBoxText").innerHTML = newcopytext;
-  } else if (holdselect == "CVDH/ITC") {
+  } else if (holdselect == "CVDH/ITC" && reasonselect == "select a reason") {
     copytext = String(copytext);
     var ccopytext = copytext.split("*");
-    var newcopytext = "*" + ccopytext[1] + "* " + texytext + "&#13;*" + ccopytext[3] + "* " + texytext;
+    var newcopytext = "*" + ccopytext[1] + "* " + texytext + "\r*" + ccopytext[3] + "* " + texytext;
+    document.getElementById("CopyBoxText").innerHTML = newcopytext;
+  } else if (holdselect == "CREDIT RISK" && reasonselect == "select a reason") {
+    copytext = String(copytext);
+    var ccopytext = copytext.split("*");
+    var newcopytext = "*" + ccopytext[1] + "* " + texytext + "\r*" + ccopytext[3] + "* " + texytext;
     document.getElementById("CopyBoxText").innerHTML = newcopytext;
   } else {
     var newcopytext = copytext + texytext;
@@ -167,7 +224,7 @@ function holdChange() {
     case "TSF/TAX/DOA":
       document.getElementById("ReasonsList").innerHTML = '<div class="select is-info is-fullwidth"><select id="ReasonsSelect" onchange="reasonChange()"><option>select a reason</option><option>INCOMPLETE / NO TSF</option><option>TAX CONFIRMATION</option><option>DOA / HOTLINE ISSUES</option></select></div>';
       document.getElementById("TexyBox").innerHTML = '<textarea onkeyup="textChange()" class="textarea is-info" placeholder="Enter additional info" id="TexyBoxText"></textarea>';
-      document.getElementById("CopyBox").innerHTML = '<textarea class="textarea" type="text" readonly id="CopyBoxText">*CD-TSF*&#13;*CD-TAX*&#13;*CD-DOA*</textarea>';
+      document.getElementById("CopyBox").innerHTML = '<textarea class="textarea" type="text" readonly id="CopyBoxText">*CD-TSF*\r*CD-TAX*\r*CD-DOA*</textarea>';
       break;
     case "TECH REVIEW":
       document.getElementById("ReasonsList").innerHTML = '<div class="select is-info is-fullwidth"><select id="ReasonsSelect" onchange="reasonChange()"><option>select a reason</option><option>PRICE CONFIRMATION</option><option>PART CONFIRMATION</option><option>NO QUOTE UPLOADED</option></select></div>';
@@ -177,7 +234,7 @@ function holdChange() {
     case "CREDIT RISK":
       document.getElementById("ReasonsList").innerHTML = '<div class="select is-info is-fullwidth"><select id="ReasonsSelect" onchange="reasonChange()"><option>select a reason</option><option>CREDIT SHIPMENT HOLD</option><option>C1 CREDIT HOLD</option></select></div>';
       document.getElementById("TexyBox").innerHTML = '<textarea onkeyup="textChange()" class="textarea is-info" placeholder="Enter additional info" id="TexyBoxText"></textarea>';
-      document.getElementById("CopyBox").innerHTML = '<textarea class="textarea" type="text" readonly id="CopyBoxText">*CD-CRISK&#13;*NCD-C1*</textarea>';
+      document.getElementById("CopyBox").innerHTML = '<textarea class="textarea" type="text" readonly id="CopyBoxText">*CD-CRISK*\r*NCD-C1*</textarea>';
       break;
     case "CREDIT CARD":
       document.getElementById("ReasonsList").innerHTML = '<div class="select is-info is-fullwidth"><select id="ReasonsSelect" onchange="reasonChange()"><option>select a reason</option><option>PRE-AUTH FAILED</option><option>INCOMPLETE CARD DETAILS</option></select></div>';
@@ -187,7 +244,7 @@ function holdChange() {
     case "CVDH/ITC":
       document.getElementById("ReasonsList").innerHTML = '<div class="select is-info is-fullwidth"><select id="ReasonsSelect" onchange="reasonChange()"><option>select a reason</option><option>WAITING FOR CVDH</option><option>WAITING FOR ITC</option></select></div>';
       document.getElementById("TexyBox").innerHTML = '<textarea onkeyup="textChange()" class="textarea is-info" placeholder="Enter additional info" id="TexyBoxText"></textarea>';
-      document.getElementById("CopyBox").innerHTML = '<textarea class="textarea" type="text" readonly id="CopyBoxText">*NCD-CVDH*&#13;*NCD-ITC*</textarea>';
+      document.getElementById("CopyBox").innerHTML = '<textarea class="textarea" type="text" readonly id="CopyBoxText">*NCD-CVDH*\r*NCD-ITC*</textarea>';
       break;
     case "OTHERS":
       document.getElementById("ReasonsList").innerHTML = '<div class="select is-info is-fullwidth"><select id="ReasonsSelect" onchange="reasonChange()" disabled><option>specify reason</option></select></div>';
@@ -283,7 +340,7 @@ function holdChange() {
         document.getElementById("TexyBox").innerHTML = '<textarea onkeyup="textChange()" class="textarea is-info" placeholder="Enter additional info" id="TexyBoxText"></textarea>';
         break;
         default:
-        document.getElementById("HoldsList").innerHTML = '<div class="select is-info is-fullwidth"><select id="HoldsSelect" onchange="holdChange()"><option>select a hold</option><option>REVISED PO</option><option>TSF/TAX/DOA</option><option>TECH REVIEW</option><option>CREDIT RISK</option><option>CREDIT CARD</option><option>CVDH/ITC</option><option>OTHERS</option></select></div>';
+          document.getElementById("HoldsList").innerHTML = '<div class="select is-info is-fullwidth"><select id="HoldsSelect" onchange="holdChange()"><option>select a hold</option><option>REVISED PO</option><option>TSF/TAX/DOA</option><option>TECH REVIEW</option><option>CREDIT RISK</option><option>CREDIT CARD</option><option>CVDH/ITC</option><option>OTHERS</option></select></div><span class="icon is-small is-left">1.</span>';
         document.getElementById("ReasonsList").innerHTML = '<div class="select is-info is-fullwidth"><select disabled><option></option></select></div>';
         document.getElementById("TexyBox").innerHTML = '<textarea onkeyup="textChange()" class="textarea is-info" disabled></textarea>';
         document.getElementById("CopyBox").innerHTML = '<textarea class="textarea" type="text" readonly id="CopyBoxText"></textarea>';

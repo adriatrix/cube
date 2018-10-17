@@ -15,401 +15,408 @@
 
   <!-- imports custom css -->
   <link rel="stylesheet" type="text/css" href="css/style.css">
+  
+  <!-- imports favicon -->
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
 </head>
 <body>
 
 
-<section class="hero is-light is-small">
-<div class="hero-head">
-  <nav class="navbar is-grey" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <a class="navbar-item" href="index.html">
-        <img src="img/cube.png" alt="GCube: an everyday tool for your everday tool" width="28" height="28">
-      </a>
+<section class="hero is-light">
+  <div class="hero-head">
+    <nav class="navbar is-grey" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="index.html">
+          <img src="img/invi-cube.png" alt="GCube: an everyday tool for your everday tool" width="28" height="28">
+        </a>
 
-      <button class="button navbar-burger is-white" data-target="navMenu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </div>
+        <button class="button navbar-burger is-white" data-target="navMenu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
 
-    <div id="navMenu" class="navbar-menu">
-      <div class="navbar-end">
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link" href="#">Documentations</a>
-          <div class="navbar-dropdown ">
-            <a class="navbar-item" href="#">Customers</a>
-            <a class="navbar-item" href="#">Directory</a>
-            <a class="navbar-item" href="#">Parts</a>
-            <a class="navbar-item" href="#">Pricebooks</a>
-            <hr class="navbar-divider">
-            <div class="navbar-item">
-              <div>
-                <p class="is-size-6-desktop"><strong>GCube ver. <span class="has-text-info">0.3.3</span></strong></p>
-                <small><a class="bd-view-all-versions" href="docs/versions.html">View all versions</a></small>
+      <div id="navMenu" class="navbar-menu">
+        <div class="navbar-end">
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link" href="#">Documentations</a>
+            <div class="navbar-dropdown ">
+              <a class="navbar-item" href="#">Customers</a>
+              <a class="navbar-item" href="#">Directory</a>
+              <a class="navbar-item" href="#">Parts</a>
+              <a class="navbar-item" href="#">Pricebooks</a>
+              <hr class="navbar-divider">
+              <div class="navbar-item">
+                <div>
+                  <p class="is-size-6-desktop"><strong>GCube ver. <span class="has-text-info">0.4.1</span></strong></p>
+                  <small><a class="bd-view-all-versions" href="docs/versions.html">View all versions</a></small>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </nav>
-</div>
-
-<div class="hero-body">
-  <div class="container is-fluid">
-    <div class="columns">
-      <div class="column is-3">
-        <!-- <h2 class="title has-text-grey">SLA Helper</h2> -->
-        <div class="columns is-multiline">
-          <div class="column">
-            <!-- for date/time input box -->
-            <div class="has-addons has-addons-centered">
-              <!-- <label for="date1">received date/time</label> -->
-              <div class="field">
-                <div class="control has-icons-left has-text-centered">
-                  <input type="text" class="input is-info" name="date1" id="date1" value="" onchange="showDiff()" autocomplete="off" placeholder="received date/time">
-                  <span class="icon is-left"><i class="far fa-calendar-alt"></i></span>
-                </div>
-                <p class="help is-secondary" id="exampleDate"></p>
-              </div>
-            </div>
-          </div>
-          <!-- <div class="column is-12">
-            <div class="is-size-5 has-text-centered">
-            </div>
-          </div> -->
-          <div class="column is-12">
-            <p class="has-text-centered is-size-7" id="showDate1">&nbsp;</p>
-            <p class="has-text-centered is-size-7" id="showDate2">&nbsp;</p>
-            <p class="has-text-centered is-size-5">&nbsp;
-                <span id="showStatus1"> </span>
-                <span class="has-text-weight-bold" id="showStatus2"></span>
-            </p>
-          </div>
-        </div>
-      </div> <!-- /.column -->
-      
-      
-      <div class="column is-3">
-        <!-- <h2 class="title has-text-grey">&nbsp;</h2> -->
-        <p class="heading botborder">Elapsed Time</p>
-        <div class="columns is-mobile">
-          <div class="column has-text-centered">
-            <div class="is-size-5">
-              <p class="has-text-weight-bold" id="showDays"></p>
-            </div>
-          </div>
-          <div class="column has-text-centered">
-            <div class="is-size-5">
-              <p class="has-text-weight-bold" id="showHours"></p>
-            </div>
-          </div>
-          <div class="column has-text-centered">
-            <div class="is-size-5">
-              <p class="has-text-weight-bold" id="showMins"></p>
-            </div>
-          </div>
-          <div class="column has-text-centered">
-            <div class="is-size-5">
-              <p class="has-text-weight-bold" id="showSecs"></p>
-            </div>
-          </div>
-        </div>
-        
-        <p class="heading botborder">Remaining Time</p>
-        <div class="columns is-mobile">
-          <div class="column has-text-centered">
-            <div class="is-size-5">
-              <p class="has-text-weight-bold" id="showcsDays"></p>
-            </div>
-          </div>
-          <div class="column has-text-centered">
-            <div class="is-size-5">
-              <p class="has-text-weight-bold" id="showcsHours"></p>
-            </div>
-          </div>
-          <div class="column has-text-centered">
-            <div class="is-size-5">
-              <p class="has-text-weight-bold" id="showcsMins"></p>
-            </div>
-          </div>
-          <div class="column has-text-centered">
-            <div class="is-size-5">
-              <p class="has-text-weight-bold" id="showcsSecs"></p>
-            </div>
-          </div>
-        </div>
-      </div> <!-- /.column -->
-
-      <div class="column is-6 box">
-        <!-- <h2 class="title has-text-grey">GC Holds Namer</h2> -->
-        <div class="columns">
-          <div class="column">
-            <div class="columns">
-              <div class="column is-6">
-                <div class="field">
-                  <div class="control has-icons-left" id="HoldsList">
-                    <div class="select is-info is-fullwidth">
-                      <select id="HoldsSelect" onchange="holdChange()">
-                        <option>select a hold</option>
-                        <option>REVISED PO</option>
-                        <option>TSF/TAX/DOA</option>
-                        <option>TECH REVIEW</option>
-                        <option>CREDIT RISK</option>
-                        <option>CREDIT CARD</option>
-                        <option>CVDH/ITC</option>
-                        <option>OTHERS</option>
-                      </select>
-                    </div>
-                    <span class="icon is-small is-left">1.</i></span>
-                  </div>
-                </div>
-              </div>
-              <div class="column is-6">
-                <div class="field">
-                  <div class="control is-6 has-icons-left" id="ReasonsList">
-                    <div class="select is-info is-fullwidth">
-                      <select disabled>
-                        <option></option>
-                      </select>
-                    </div>
-                    <span class="icon is-small is-left">2.</i></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="columns">
-              <div class="column is-6" id="TexyBox">
-                <textarea class="textarea is-info" disabled></textarea>
-              </div>
-              <div class="column is-6" id="CopyBox">
-                <textarea class="textarea" type="text" readonly id="CopyBoxText"></textarea>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- <div class="column is-3">
-        <div class="columns is-mobile">
-          <div class="column is-10 is-offset-1 is-mobile">
-            <p>total orders: <span class="has-text-weight-bold has-text-grey-darker" id="showTotalOrders"></span><span class="is-pulled-right">SLA: <span class="has-text-weight-bold" id="showSLAScore"></span></span></p>
-            <div class="field-body">
-              <div class="field has-addons">
-                <p class="control">
-                  <input class="input is-success is-medium" id="goodvalue" type="number" placeholder="within SLA" value="1">
-                </p>
-                <p class="control">
-                  <a class="button is-success is-medium" step="1" id="addgood" onclick="addGood()">
-                    <i class="fas fa-thumbs-up"></i>
-                  </a>
-                </p>
-              </div>
-              <div class="column has-text-centered">
-                <div class="is-size-5">
-                  <p id="showTotalGood"></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="columns is-mobile is-gapless">
-          <div class="column is-10 is-offset-1">
-            <div class="field-body">
-              <div class="field has-addons">
-                <p class="control">
-                  <input class="input is-danger is-medium" step="1" id="badvalue" type="number" placeholder="over SLA" value="1">
-                </p>
-                <p class="control">
-                  <a class="button is-danger is-medium" id="addbad" onclick="addBad()">
-                    <i class="fas fa-thumbs-down"></i>
-                  </a>
-                </p>
-              </div>
-              <div class="column has-text-centered">
-                <div class="is-size-5">
-                  <p id="showTotalBad"></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> -->
-
-    </div> <!-- /. columns -->
+    </nav>
   </div>
-  <!-- end of SLA Helper -->
 
-
-  <!-- start of Price Calculator -->
-  <!-- <div class="container is-fluid">
-    <h2 class="title has-text-grey">Price Calculator</h2>
-    <div class="columns">
-      <div class="column is-3">
-        <div class="columns is-multiline">
-          <div class="column is-10 is-offset-1 box">
-            <div class="has-addons has-addons-centered">
-              <label>list price:</label>
-              <div class="control has-icons-left">
-                <input type="number" class="input is-medium is-dark is-currency" id="listedprice" min="0" step="0.01" oninput="checkComputations()" autocomplete="off" placeholder="enter list price">
-                <span class="icon is-medium is-left"><i class="fas fa-dollar-sign"></i></span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> 
-
-      <div class="column is-3">
-        <div class="columns is-mobile">
-          
-          <div class="column is-6 is-offset-1">
-            <div class="field">
-              <label for=""><i class="fas fa-barcode"></i> price code</label>
-              <div class="control">
-                <div class="select is-small is-dark">
-                  <select name="pricecode" id="priceCode" onchange="showICFactor()">
-                    <option class="selected" >------------</option>
-                    <option>GC-1500XA</option>
-                    <option>GC-2350A</option>
-                    <option>GC-370XA</option>
-                    <option>GC-500</option>
-                    <option>GC-500NG</option>
-                    <option>GC-700XA</option>
-                    <option>GC-770XA</option>
-                    <option>GC-AUX</option>
-                    <option>GC-BTUSCS</option>
-                    <option>GC-370SCS</option>
-                    <option>GC-CAB</option>
-                    <option>GC-370ENC</option>
-                    <option>GC-SERV</option>
-                    <option>GC-SP370</option>
-                    <option>GC-SP</option>
-                    <option>GC-ESP</option>
-                    <option>GC-EUR</option>
-                  </select>
-                </div>
-              </div>
-              <span class="is-size-7">interco discount: </span>
-              <span class="is-size-6 has-text-weight-bold" id="showICD"></span>
-            </div>
-          </div>
-          <div class="column is-4">
-            <div class="field">
-              <label for=""><i class="fas fa-globe"></i> area</label>
-              <div class="control">
-                <div class="select is-small is-dark">
-                  <select name="worldarea" id="worldArea" onchange="showICFactor()">
-                    <option class="selected" >------</option>
-                    <option>NA</option>
-                    <option>EUR</option>
-                    <option>AP</option>
-                    <option>LATAM</option>
-                    <option>MEA</option>
-                  </select>
-                </div>
-              </div>
-              <span class="is-size-7">glp: </span>
-              <span class="is-size-6 has-text-weight-bold" id="showGLP"></span>
-            </div>
-          </div>
-        </div>
-      </div> 
-
-      <div class="column">
-
-        <div class="columns">
-          <div class="column is-6">
-            <div class="columns">
-              <div class="column is-10 is-offset-1">
-                <div class="has-addons has-addons-centered">
-                  <label for="">interco factor:</label>
+  <div class="hero-body">
+    <div class="container is-fluid">
+      <div class="columns box has-background-grey-darker">
+        <div class="column is-3">
+          <!-- <h2 class="title has-text-grey">TAT Helper</h2> -->
+          <div class="columns is-multiline">
+            <div class="column box">
+              <!-- for date/time input box -->
+              <div class="has-addons has-addons-centered">
+                <!-- <label for="date1">received date/time</label> -->
+                <div class="field">
                   <div class="control has-icons-left has-text-centered">
-                    <input type="number" class="input is-medium is-dark is-currency" name="showICF" id="showICF" min="0" step="any" value="" autocomplete="off" placeholder="enter interco factor" oninput="computeIntercoDiscPrice()">
-                    <span class="icon is-medium is-left"><i class="fas fa-pencil-alt"></i></span>
+                    <input type="text" class="input is-info" name="date1" id="date1" value="" onchange="showDiff()" autocomplete="off" placeholder="received date/time">
+                    <span class="icon is-left"><i class="far fa-calendar-alt"></i></span>
+                  </div>
+                  <div class="columns is-mobile">
+                    <div class="column is-1">
+                      <p class="help is-grey"><strong>ie: </strong></p>
+                    </div>
+                    <div class="column">
+                      <p class="help is-grey" id="exampleDate"></p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+            <!-- <div class="column is-12">
+              <div class="is-size-5 has-text-centered">
+              </div>
+            </div> -->
+            <div class="column is-12 is-unselectable has-text-light">
+              <p class="has-text-centered is-size-7" id="showDate1">&nbsp;</p>
+              <p class="has-text-centered is-size-7" id="showDate2">&nbsp;</p>
+              <p class="has-text-centered is-size-5">&nbsp;
+                  <span id="showStatus1"> </span>
+                  <span class="has-text-weight-bold" id="showStatus2"></span>
+              </p>
+            </div>
           </div>
-          <div class="column is-6">
-            <div class="columns">
-              <div class="column is-10 is-offset-1">
-                <div class="has-addons has-addons-centered">
-                  <label for="discedprice">discounted interco price</label>
-                  <div class="control has-icons-left">
-                    <input type="number" class="input is-medium is-dark is-currency" readonly id="intercodiscedprice" min="0" step="0.01" value="" oninput="" autocomplete="off">
-                    <span class="icon is-medium is-left"><i class="fas fa-dollar-sign"></i></span>
+        </div> <!-- /.column -->
+        
+        
+        <div class="column is-3 has-text-light is-unselectable">
+          <!-- <h2 class="title has-text-grey">&nbsp;</h2> -->
+          <p class="heading botborder">Elapsed Time</p>
+          <div class="columns is-mobile">
+            <div class="column has-text-centered">
+              <div class="is-size-5">
+                <p class="has-text-weight-bold" id="showDays"></p>
+              </div>
+            </div>
+            <div class="column has-text-centered">
+              <div class="is-size-5">
+                <p class="has-text-weight-bold" id="showHours"></p>
+              </div>
+            </div>
+            <div class="column has-text-centered">
+              <div class="is-size-5">
+                <p class="has-text-weight-bold" id="showMins"></p>
+              </div>
+            </div>
+            <div class="column has-text-centered">
+              <div class="is-size-5">
+                <p class="has-text-weight-bold" id="showSecs"></p>
+              </div>
+            </div>
+          </div>
+          
+          <p class="heading botborder has-text-light" id="day2Title">Under or Over?</p>
+          <div class="columns is-mobile">
+            <div class="column has-text-centered">
+              <div class="is-size-5">
+                <p class="has-text-weight-bold" id="showcsDays"></p>
+              </div>
+            </div>
+            <div class="column has-text-centered">
+              <div class="is-size-5">
+                <p class="has-text-weight-bold" id="showcsHours"></p>
+              </div>
+            </div>
+            <div class="column has-text-centered">
+              <div class="is-size-5">
+                <p class="has-text-weight-bold" id="showcsMins"></p>
+              </div>
+            </div>
+            <div class="column has-text-centered">
+              <div class="is-size-5">
+                <p class="has-text-weight-bold" id="showcsSecs"></p>
+              </div>
+            </div>
+          </div>
+        </div> <!-- /.column -->
+
+        <div class="column is-6 box">
+          <!-- <h2 class="title has-text-grey">GC Holds Namer</h2> -->
+          <div class="columns">
+            <div class="column">
+              <div class="columns">
+                <div class="column is-6">
+                  <div class="field">
+                    <div class="control has-icons-left" id="HoldsList">
+                      <div class="select is-info is-fullwidth">
+                        <select id="HoldsSelect" onchange="holdChange()">
+                          <option>select a hold</option>
+                          <option>REVISED PO</option>
+                          <option>TSF/TAX/DOA</option>
+                          <option>TECH REVIEW</option>
+                          <option>CREDIT RISK</option>
+                          <option>CREDIT CARD</option>
+                          <option>CVDH/ITC</option>
+                          <option>OTHERS</option>
+                        </select>
+                      </div>
+                      <span class="icon is-small is-left">1.</i></span>
+                    </div>
                   </div>
+                </div>
+                <div class="column is-6">
+                  <div class="field">
+                    <div class="control is-6 has-icons-left" id="ReasonsList">
+                      <div class="select is-info is-fullwidth">
+                        <select disabled>
+                          <option></option>
+                        </select>
+                      </div>
+                      <span class="icon is-small is-left">2.</i></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="columns">
+                <div class="column is-6" id="TexyBox">
+                  <textarea class="textarea is-info" disabled></textarea>
+                </div>
+                <div class="column is-6" id="CopyBox">
+                  <textarea class="textarea" type="text" readonly id="CopyBoxText"></textarea>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="columns">
-          <div class="column is-6">
-            <div class="columns">
-              <div class="column is-10 is-offset-1">
-                <div class="has-addons has-addons-centered">
-                  <label>discount:</label>
-                  <div class="control has-icons-right has-text-centered">
-                    <input type="number" class="input is-medium is-dark has-text-right is-currency" id="discount" step="0.01" value="" autocomplete="off" placeholder="enter discount" oninput="computeDiscount()">
-                    <span class="icon is-medium is-right"><i class="fas fa-percent"></i></span>
+        <!-- <div class="column is-3">
+          <div class="columns is-mobile">
+            <div class="column is-10 is-offset-1 is-mobile">
+              <p>total orders: <span class="has-text-weight-bold has-text-grey-darker" id="showTotalOrders"></span><span class="is-pulled-right">TAT: <span class="has-text-weight-bold" id="showTATScore"></span></span></p>
+              <div class="field-body">
+                <div class="field has-addons">
+                  <p class="control">
+                    <input class="input is-success is-medium" id="goodvalue" type="number" placeholder="within TAT" value="1">
+                  </p>
+                  <p class="control">
+                    <a class="button is-success is-medium" step="1" id="addgood" onclick="addGood()">
+                      <i class="fas fa-thumbs-up"></i>
+                    </a>
+                  </p>
+                </div>
+                <div class="column has-text-centered">
+                  <div class="is-size-5">
+                    <p id="showTotalGood"></p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
-          <div class="column is-6">
-            <div class="columns">
-              <div class="column is-10 is-offset-1">
-                <div class="has-addons has-addons-centered">
-                  <label for="discedprice">discounted price:</label>
-                  <div class="control has-icons-left">
-                    <input type="number" class="input is-medium is-dark is-currency" id="discedprice" min="0" step="0.01" value="" oninput="computeDiscPrice()" autocomplete="off">
-                    <span class="icon is-medium is-left"><i class="fas fa-dollar-sign"></i></span>
+          <div class="columns is-mobile is-gapless">
+            <div class="column is-10 is-offset-1">
+              <div class="field-body">
+                <div class="field has-addons">
+                  <p class="control">
+                    <input class="input is-danger is-medium" step="1" id="badvalue" type="number" placeholder="over TAT" value="1">
+                  </p>
+                  <p class="control">
+                    <a class="button is-danger is-medium" id="addbad" onclick="addBad()">
+                      <i class="fas fa-thumbs-down"></i>
+                    </a>
+                  </p>
+                </div>
+                <div class="column has-text-centered">
+                  <div class="is-size-5">
+                    <p id="showTotalBad"></p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
 
-      </div> 
-    </div> 
-  </div> -->
-  <!-- end of Price Calculator -->
+      </div> <!-- /. columns -->
+    <!-- end of TAT Helper -->
 
-</div>
-
-<div class="hero-foot">
-    <!-- <nav class="tabs is-boxed is-fullwidth">
-      <div class="container">
+    <!-- start of Price Calculator -->
+      <!-- <h2 class="title has-text-grey">Price Calculator</h2> -->
+      <div class="tabs is-boxed is-small is-toggle is-marginless">
         <ul>
           <li class="is-active">
-            <a>Overview</a>
+            <a onchange="fyChange()">
+              <span class="icon is-small"><i class="far fa-calendar-alt" aria-hidden="true"></i></span>
+              <span>FY19</span>
+            </a>
           </li>
           <li>
-            <a>Modifiers</a>
-          </li>
-          <li>
-            <a>Grid</a>
-          </li>
-          <li>
-            <a>Elements</a>
-          </li>
-          <li>
-            <a>Components</a>
-          </li>
-          <li>
-            <a>Layout</a>
+            <a onchange="fyChange()">
+              <span class="icon is-small"><i class="far fa-calendar-alt" aria-hidden="true"></i></span>
+              <span>FY18</span>
+            </a>
           </li>
         </ul>
       </div>
-    </nav> -->
+      <div class="columns box has-background-grey-darker">
+        <div class="column is-3">
+          <div class="columns is-multiline">
+            <div class="column is-12 box">
+              <div class="has-addons has-addons-centered">
+                <label>USLP:</label>
+                <div class="control has-icons-left">
+                  <input type="number" class="input is-info is-currency" id="uslprice" min="0" step="0.01" oninput="checkComputations()" autocomplete="off" placeholder="enter US List Price">
+                  <span class="icon is-left"><i class="fas fa-dollar-sign"></i></span>
+                </div>
+              </div>
+            </div>
+            <div class="column is-12 box">
+              <div class="has-addons has-addons-centered">
+                <label>GLP:</label>
+                <div class="control has-icons-left">
+                  <input type="number" class="input is-info is-currency" id="glprice" min="0" step="0.01" oninput="checkGLComputations()" autocomplete="off" placeholder="enter Global List Price">
+                  <span class="icon is-left"><i class="fas fa-dollar-sign"></i></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> 
+
+        <div class="column is-3">
+          <div class="columns is-mobile">
+            
+            <div class="column">
+              <div class="field has-text-light">
+                <label for=""><i class="fas fa-barcode"></i> price code</label>
+                <div class="control">
+                  <div class="select is-info is-fullwidth">
+                    <select name="pricecode" id="priceCode" onchange="showICFactor()">
+                      <option class="selected" >------------</option>
+                      <option>GC-1500XA</option>
+                      <option>GC-2350A</option>
+                      <option>GC-370XA</option>
+                      <option>GC-500</option>
+                      <option>GC-500NG</option>
+                      <option>GC-700XA</option>
+                      <option>GC-770XA</option>
+                      <option>GC-AUX</option>
+                      <option>GC-BTUSCS</option>
+                      <option>GC-370SCS</option>
+                      <option>GC-CAB</option>
+                      <option>GC-370ENC</option>
+                      <option>GC-SERV</option>
+                      <option>GC-SP370</option>
+                      <option>GC-SP</option>
+                      <option>GC-ESP</option>
+                      <option>GC-EUR</option>
+                    </select>
+                  </div>
+                </div>
+                <span class="is-size-7">glp: </span>
+                <span class="is-size-6 has-text-weight-bold" id="showGLP"></span>
+              </div>
+            </div>
+            <div class="column">
+              <div class="field has-text-light">
+                <label for=""><i class="fas fa-globe"></i> area</label>
+                <div class="control">
+                  <div class="select is-info is-fullwidth">
+                    <select name="worldarea" id="worldArea" onchange="showICFactor()">
+                        <option class="selected" >------------</option>
+                        <option>NA</option>
+                        <option>EUR</option>
+                        <option>AP</option>
+                        <option>LATAM</option>
+                        <option>MEA</option>
+                      </select>
+                    </div>
+                  </div>
+                <span class="is-size-7">interco discount: </span>
+                <span class="is-size-6 has-text-weight-bold" id="showICD"></span>
+              </div>
+            </div>
+          </div>
+        </div> 
+
+        <div class="column box">
+          <div class="columns">
+            <div class="column is-6">
+              <div class="columns">
+                <div class="column">
+                  <div class="has-addons has-addons-centered">
+                    <label for="">interco factor:</label>
+                    <div class="control has-icons-left has-text-centered">
+                      <input type="number" class="input is-info is-currency" name="showICF" id="showICF" min="0" step="any" value="" autocomplete="off" placeholder="enter interco factor" oninput="computeIntercoDiscPrice()">
+                      <span class="icon is-left"><i class="fas fa-pencil-alt"></i></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="column is-6">
+              <div class="columns">
+                <div class="column">
+                  <div class="has-addons has-addons-centered">
+                    <label for="discedprice">discounted interco price</label>
+                    <div class="control has-icons-left">
+                      <input type="number" class="input is-info is-currency is-focused" readonly id="intercodiscedprice" min="0" step="0.01" value="" oninput="" autocomplete="off">
+                      <span class="icon is-left"><i class="fas fa-dollar-sign"></i></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="columns">
+            <div class="column is-6">
+              <div class="columns">
+                <div class="column">
+                  <div class="has-addons has-addons-centered">
+                    <label>discount:</label>
+                    <div class="control has-icons-right has-text-centered">
+                      <input type="number" class="input is-info has-text-right is-currency" id="discount" step="0.01" value="" autocomplete="off" placeholder="enter discount" oninput="computeDiscount()">
+                      <span class="icon is-right"><i class="fas fa-percent"></i></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="column is-6">
+              <div class="columns">
+                <div class="column">
+                  <div class="has-addons has-addons-centered">
+                    <label for="discedprice">discounted price:</label>
+                    <div class="control has-icons-left">
+                      <input type="number" class="input is-info is-currency" id="discedprice" min="0" step="0.01" value="" oninput="computeDiscPrice()" autocomplete="off">
+                      <span class="icon is-left"><i class="fas fa-dollar-sign"></i></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> 
+      </div> 
+      <!-- end of Price Calculator -->
+    </div>
+
+  </div>
+
+  <div class="hero-foot">
   </div>
 </section>
 

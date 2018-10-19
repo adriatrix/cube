@@ -196,7 +196,7 @@
                   <textarea class="textarea is-info" disabled></textarea>
                 </div>
                 <div class="column is-6" id="CopyBox">
-                  <textarea class="textarea" type="text" readonly id="CopyBoxText"></textarea>
+                  <textarea class="textarea is-secondary" type="text" readonly id="CopyBoxText"></textarea>
                 </div>
               </div>
             </div>
@@ -256,14 +256,14 @@
       <!-- <h2 class="title has-text-grey">Price Calculator</h2> -->
       <div class="tabs is-boxed is-small is-toggle is-marginless">
         <ul>
-          <li class="is-active">
-            <a onchange="fyChange()">
+          <li class="is-active" id="fyear19"> 
+            <a onclick="fy19Change()">
               <span class="icon is-small"><i class="far fa-calendar-alt" aria-hidden="true"></i></span>
               <span>FY19</span>
             </a>
           </li>
-          <li>
-            <a onchange="fyChange()">
+          <li id="fyear18">
+            <a onclick="fy18Change()">
               <span class="icon is-small"><i class="far fa-calendar-alt" aria-hidden="true"></i></span>
               <span>FY18</span>
             </a>
@@ -300,7 +300,7 @@
             <div class="column">
               <div class="field has-text-light">
                 <label for=""><i class="fas fa-barcode"></i> price code</label>
-                <div class="control">
+                <div class="control" id="CodeList">
                   <div class="select is-info is-fullwidth">
                     <select name="pricecode" id="priceCode" onchange="showICFactor()">
                       <option class="selected" >------------</option>
@@ -320,7 +320,6 @@
                       <option>GC-SP370</option>
                       <option>GC-SP</option>
                       <option>GC-ESP</option>
-                      <option>GC-EUR</option>
                     </select>
                   </div>
                 </div>
@@ -331,7 +330,7 @@
             <div class="column">
               <div class="field has-text-light">
                 <label for=""><i class="fas fa-globe"></i> area</label>
-                <div class="control">
+                <div class="control" id="AreaList">
                   <div class="select is-info is-fullwidth">
                     <select name="worldarea" id="worldArea" onchange="showICFactor()">
                         <option class="selected" >------------</option>
@@ -371,7 +370,7 @@
                   <div class="has-addons has-addons-centered">
                     <label for="discedprice">discounted interco price</label>
                     <div class="control has-icons-left">
-                      <input type="number" class="input is-info is-currency is-focused" readonly id="intercodiscedprice" min="0" step="0.01" value="" oninput="" autocomplete="off">
+                      <input type="number" class="input is-secondary is-currency" readonly id="intercodiscedprice" min="0" step="0.01" autocomplete="off">
                       <span class="icon is-left"><i class="fas fa-dollar-sign"></i></span>
                     </div>
                   </div>

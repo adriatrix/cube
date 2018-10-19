@@ -4,10 +4,6 @@
 	box-sizing: border-box;
 }
 
-body {
-	/* background-color: #0f0f0f; */
-}
-
 .mainWrapper {
     max-width: 100vw; /* vw = viewport width */
     min-width: 100vw;
@@ -58,6 +54,22 @@ textarea {
    margin-bottom: 1em  !important;;
    border-bottom-left-radius: 0 !important;
    border-bottom-right-radius: 0 !important;
+}
+
+.control.has-icons-left .icon,
+.control.has-icons-right .icon, 
+.control.has-icons-left .icon:focus,
+.control.has-icons-right .icon:focus {
+    color: #363636 !important;
+}
+
+textarea.textarea.is-secondary:focus,
+input.input.is-secondary:focus {
+    border-color: #363636 !important;
+}
+
+input::-ms-clear {
+    display: none;
 }
 
 /* The snackbar - position it at the bottom and in the middle of the screen */
